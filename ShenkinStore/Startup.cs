@@ -12,6 +12,7 @@ using ShenkinStore.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ShenkinStore.Models;
 
 namespace ShenkinStore
 {
@@ -30,6 +31,11 @@ namespace ShenkinStore
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ShenkinContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("ShenkinConnection")));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
