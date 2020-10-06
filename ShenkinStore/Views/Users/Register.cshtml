@@ -9,94 +9,101 @@
     </legend>
     @using (Html.BeginForm("Register", "Users", FormMethod.Post))
     {
-        <table>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => Model.UserName)
-                </td>
-                <td>
-                    @Html.TextBoxFor(model => Model.UserName)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => Model.Email)
-                </td>
-                <td>
-                    @Html.TextBoxFor(model => Model.Email)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => Model.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(model => Model.Password)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => Model.ConfirmedPassword)
-                </td>
-                <td>
-                    @Html.PasswordFor(model => Model.ConfirmedPassword)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td colspan="2">
-                    @Html.ValidationMessageFor(model => model.ConfirmedPassword, null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => Model.Phone)
-                </td>
-                <td>
-                    @Html.TextBoxFor(model => Model.Phone)
-                </td>
-            </tr>
-            <tr>
-                <td>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model => Model.UserName)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => Model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="2">
+            @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => Model.Email)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => Model.Email)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="2">
+            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => Model.Password)
+        </td>
+        <td>
+            @Html.PasswordFor(model => Model.Password)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="2">
+            @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => Model.ConfirmedPassword)
+        </td>
+        <td>
+            @Html.PasswordFor(model => Model.ConfirmedPassword)
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td colspan="2">
+            @Html.ValidationMessageFor(model => model.ConfirmedPassword, null, new { @class = "text text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => Model.Phone)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => Model.Phone)
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td colspan="2">
+            @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "text text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
 
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="submit" value="Register" />
-                            </td>
-                            <td>
-                                <input type="reset" value="Reset" />
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-        </table>
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <input type="submit" value="Register" />
+                    </td>
+                    <td>
+                        <input type="reset" value="Reset" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+        </td>
+    </tr>
+</table>
 
     }
 </fieldset>

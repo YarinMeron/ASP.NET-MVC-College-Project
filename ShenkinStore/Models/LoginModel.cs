@@ -10,11 +10,9 @@ namespace ShenkinStore.Models
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "UserName is Requierd.")]
         [Display(Name = "User Name")]
-
         public string UserName { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is Requierd.")]
         [DataType(DataType.Password)]
-
         public string Password { get; set; }
     }
 }
