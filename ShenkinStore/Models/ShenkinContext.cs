@@ -16,7 +16,7 @@ namespace ShenkinStore.Models
         {
         }
         public virtual DbSet<Product> Products { get; set; }
-
+        // ************* "A Comment in case we'll need for future use" *************
         //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //        {
         //            if (!optionsBuilder.IsConfigured)

@@ -21,8 +21,8 @@ namespace ShenkinStore.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            var shenkinContext = _context.Transaction.Include(t => t.Product).Include(t => t.User);
-            return View(await shenkinContext.ToListAsync());
+            var Transaction = _context.Transaction.Include(t => t.Product).Include(t => t.User);
+            return View(await Transaction.ToListAsync());
         }
 
         // GET: Transactions/Details/5
