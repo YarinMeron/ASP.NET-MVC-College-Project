@@ -32,8 +32,8 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.Include(t=>t.Transactions)
-                .ThenInclude(t=>t.Product)
+            var user = await _context.User.Include(t => t.Transactions)
+                .ThenInclude(t => t.Product)
                 .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
@@ -71,6 +71,7 @@ namespace ShenkinStore.Controllers
             if (id == null)
             {
                 return NotFound();
+
             }
 
             var user = await _context.User.FindAsync(id);
@@ -122,6 +123,7 @@ namespace ShenkinStore.Controllers
             if (id == null)
             {
                 return NotFound();
+
             }
 
             var user = await _context.User
@@ -131,6 +133,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
+            
             return View(user);
         }
 
@@ -142,6 +145,7 @@ namespace ShenkinStore.Controllers
             var user = await _context.User.FindAsync(id);
             _context.User.Remove(user);
             await _context.SaveChangesAsync();
+            
             return RedirectToAction(nameof(Index));
         }
 
@@ -149,5 +153,71 @@ namespace ShenkinStore.Controllers
         {
             return _context.User.Any(e => e.UserId == id);
         }
+
+        public ActionResult Register()
+        {
+            User aUser = new User();
+            return View(aUser);
+        }
+        [HttpPost]
+        public ActionResult Register(User aUser)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_context.User.Where(m => m.UserName == aUser.UserName).FirstOrDefault() == null)
+                {
+                    User objuser = new User();
+                    objuser = aUser;
+                    objuser.CreatedOn = DateTime.Now;
+                    objuser.Email = aUser.Email;
+                    objuser.UserName = aUser.UserName;
+                    objuser.Password = aUser.Password;
+                    objuser.Phone = aUser.Phone;
+                    objuser.SuccessMessege = "User is successfully add.";
+                    _context.User.Add(objuser);
+                    _context.SaveChanges();
+                    return View("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError("Error", "UserName is already exists!");
+                   return View();
+                }
+            }
+            return View();
+
+        }
+        public ActionResult Login()
+        {
+            LoginModel objloginModel = new LoginModel();
+
+            return View(objloginModel);
+        }
+        [HttpPost]
+        public ActionResult Login(LoginModel objloginModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_context.User.Where(m => m.UserName == objloginModel.UserName && m.Password == objloginModel.Password).FirstOrDefault() == null)
+                {
+                    ModelState.AddModelError("Error", "User-Name and Password are not Matching.");
+                    return View();
+                }
+                else
+                {
+                    TempData["UserName"] = objloginModel.UserName;
+                    TempData.Keep("UserName");
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            TempData.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 }

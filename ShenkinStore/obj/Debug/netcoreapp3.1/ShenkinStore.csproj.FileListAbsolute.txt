@@ -402,3 +402,5 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.dll
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.pdb
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.genruntimeconfig.cache
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
