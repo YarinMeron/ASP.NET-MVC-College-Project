@@ -167,16 +167,16 @@ namespace ShenkinStore.Controllers
                 if (_context.User.Where(m => m.UserName == aUser.UserName).FirstOrDefault() == null)
                 {
                     User objuser = new User();
-                    objuser = aUser;
                     objuser.CreatedOn = DateTime.Now;
                     objuser.Email = aUser.Email;
                     objuser.UserName = aUser.UserName;
                     objuser.Password = aUser.Password;
                     objuser.Phone = aUser.Phone;
-                    objuser.SuccessMessege = "User is successfully add.";
                     _context.User.Add(objuser);
                     _context.SaveChanges();
-                    return View("Login");
+                    objuser = new User();
+                    objuser.SuccessMessege = "User is successfully add.";
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
