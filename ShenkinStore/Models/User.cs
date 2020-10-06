@@ -12,7 +12,7 @@ namespace ShenkinStore.Models
         public int UserId { get; set; }
         [Display(Name = "User Name")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "Please enter name"), MaxLength(30)]
+        [Required(ErrorMessage = "Please enter name"), MaxLength(20)]
         public string UserName { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
