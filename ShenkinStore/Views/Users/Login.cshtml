@@ -1,0 +1,67 @@
+﻿@model ShenkinStore.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<fieldset>
+    <legend>
+
+    </legend>
+    @using (Html.BeginForm("Login", "Users", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.UserName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td colspan="2">
+                    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Password)
+                </td>
+                <td>
+                    @Html.PasswordFor(model => model.Password)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td colspan="2">
+                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Login" />
+                            </td>
+                            <td>
+                                <input type="reset" value="Reset" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" });
+                </td>
+            </tr>
+        </table>
+    }
+
+</fieldset>
