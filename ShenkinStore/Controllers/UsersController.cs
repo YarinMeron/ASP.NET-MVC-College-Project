@@ -221,7 +221,8 @@ namespace ShenkinStore.Controllers
         }
         public ActionResult Logout()
         {
-            HttpContext.Session.Remove("UserName"); 
+            HttpContext.Session.Remove("UserName");
+            HttpContext.Session.Remove("UserType");
             return RedirectToAction("Index", "Home");
         }
 

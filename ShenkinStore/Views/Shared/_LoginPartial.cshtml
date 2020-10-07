@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http
 
 @{
-
     var UserName = Context.Session.GetString("UserName");
     var UserType = Context.Session.GetInt32("UserType");
     if (UserName == null)
