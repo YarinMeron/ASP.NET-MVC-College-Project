@@ -13,7 +13,7 @@ namespace ShenkinStore.Models
         public int UserId { get; set; }
         [Display(Name = "User Name")]
         [DataType(DataType.Text)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "UserName is Requierd."),MaxLength(20)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "User Name is Requierd."),MaxLength(20)]
         public string UserName { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is Requierd.")]
         [DataType(DataType.Password)]
@@ -34,8 +34,7 @@ namespace ShenkinStore.Models
         public string Phone { get; set; }
          [Display(Name = "User Type")]
          public UserType userType { get; set; }
-        [NotMapped]
-        public string SuccessMessege { get; set; }
+       
         public DateTime CreatedOn { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
     }

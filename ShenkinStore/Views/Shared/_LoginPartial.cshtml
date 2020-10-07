@@ -1,7 +1,11 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+
 @{
+
+    var UserName = Context.Session.GetString("UserName");
+    var UserType = Context.Session.GetInt32("UserType");
+    if (UserName == null)
     
-    if (TempData.Peek("UserName") == null)
     {
         <ul class="nav navbar-nav navbar-right">
 
@@ -19,7 +23,7 @@
         <ul class="nav navbar-nav navbar-right">
 
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hello @TempData.Peek("UserName") </a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hello @UserName </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>

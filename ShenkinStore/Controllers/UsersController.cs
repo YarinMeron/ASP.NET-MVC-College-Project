@@ -1,16 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShenkinStore.Models;
+using System.Data;
+
+
+
 
 namespace ShenkinStore.Controllers
 {
     public class UsersController : Controller
     {
+      
         private readonly ShenkinContext _context;
 
         public UsersController(ShenkinContext context)
@@ -175,12 +179,11 @@ namespace ShenkinStore.Controllers
                     objuser.userType = 0;
                     _context.User.Add(objuser);
                     _context.SaveChanges();
-                    objuser.SuccessMessege = "User is successfully add.";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("Error", "User sdName is already exists!");
+                    ModelState.AddModelError("Error", "User Name is already exists!");
                    return View();
                 }
             }
@@ -200,14 +203,15 @@ namespace ShenkinStore.Controllers
             {
                 if (_context.User.Where(m => m.UserName == objloginModel.UserName && m.Password == objloginModel.Password).FirstOrDefault() == null)
                 {
-                    ModelState.AddModelError("Error", "User-Name and Password are not Matching.");
+                    ModelState.AddModelError("Error", "User Name and Password are not Matching.");
                     return View();
                 }
                 else
                 {
-                    TempData["UserName"] = objloginModel.UserName;
-                    TempData.Keep("UserName");
-                   
+                    User un = _context.User.Where(m => m.UserName == objloginModel.UserName).FirstOrDefault();
+                    HttpContext.Session.SetString("UserName", un.UserName.ToString());
+                    HttpContext.Session.SetInt32("UserType", (int)un.userType);
+
                     return RedirectToAction("Index", "Products");
                 }
               
@@ -217,7 +221,7 @@ namespace ShenkinStore.Controllers
         }
         public ActionResult Logout()
         {
-            TempData.Clear();
+            HttpContext.Session.Remove("UserName"); 
             return RedirectToAction("Index", "Home");
         }
 

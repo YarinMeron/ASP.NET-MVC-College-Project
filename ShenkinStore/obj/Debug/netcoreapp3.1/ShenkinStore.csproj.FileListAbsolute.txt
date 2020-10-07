@@ -361,9 +361,6 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.csprojAssemblyReference.cache
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.AssemblyInfoInputs.cache
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.AssemblyInfo.cs
-C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.csproj.CoreCompileInputs.cache
-C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.RazorAssemblyInfo.cache
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.RazorAssemblyInfo.cs
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.TagHelpers.input.cache
@@ -404,3 +401,7 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.genruntimeconfig.cache
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.csproj.CoreCompileInputs.cache
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AccsView.cshtml.g.cs
