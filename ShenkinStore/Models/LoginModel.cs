@@ -14,5 +14,7 @@ namespace ShenkinStore.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is Requierd.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public UserType _userType { get; set; }
     }
 }

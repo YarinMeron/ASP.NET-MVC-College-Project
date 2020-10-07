@@ -172,15 +172,15 @@ namespace ShenkinStore.Controllers
                     objuser.UserName = aUser.UserName;
                     objuser.Password = aUser.Password;
                     objuser.Phone = aUser.Phone;
+                    objuser.userType = 0;
                     _context.User.Add(objuser);
                     _context.SaveChanges();
-                    objuser = new User();
                     objuser.SuccessMessege = "User is successfully add.";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("Error", "UserName is already exists!");
+                    ModelState.AddModelError("Error", "User sdName is already exists!");
                    return View();
                 }
             }
@@ -207,8 +207,11 @@ namespace ShenkinStore.Controllers
                 {
                     TempData["UserName"] = objloginModel.UserName;
                     TempData.Keep("UserName");
-                    return RedirectToAction("Index", "Home");
+                   
+                    return RedirectToAction("Index", "Products");
                 }
+              
+                
             }
             return View();
         }
