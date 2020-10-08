@@ -159,5 +159,18 @@ namespace ShenkinStore.Controllers
         {
             return _context.Products.Any(e => e.ProductId == id);
         }
+       
+        public async Task<IActionResult> BackPacks()
+        {
+            return View(await _context.Products.ToListAsync());
+        }
+        public async Task<IActionResult> SideBags()
+        {
+            return View(await _context.Products.ToListAsync());
+        }
+        public async Task<IActionResult> Wallets()
+        {
+            return View(await _context.Products.ToListAsync());
+        }
     }
 }
