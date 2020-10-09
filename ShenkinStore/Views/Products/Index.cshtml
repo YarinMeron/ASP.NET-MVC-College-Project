@@ -76,12 +76,18 @@
                 @Html.DisplayFor(modelItem => item.Metrial)
             </td>
             <td>
-                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px"  />
+                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
             </td>
+            <td class="text-center">
+                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId}, new { @class = "btn btn-info" })
+            </td>
+
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+
             </td>
         </tr>
 }

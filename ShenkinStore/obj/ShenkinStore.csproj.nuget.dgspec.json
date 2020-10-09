@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {}
+    "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {
+    "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+        "projectUniqueName": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
         "projectName": "ShenkinStore",
-        "projectPath": "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+        "projectPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
         "packagesPath": "C:\\Users\\eliordayari\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\obj\\",
+        "outputPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eliordayari\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,6 +57,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.8, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.Host": {
+              "target": "Package",
+              "version": "[1.1.8, )"
             },
             "Microsoft.AspNetCore.Session": {
               "target": "Package",

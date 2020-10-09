@@ -2,28 +2,72 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShenkinStore.Models;
+using ShenkinStore.ViewModels;
 
 namespace ShenkinStore.Controllers
 {
     public class TransactionsController : Controller
     {
-        private readonly ShenkinContext _context;
+        private ShenkinContext db = new ShenkinContext();
 
         public TransactionsController(ShenkinContext context)
         {
-            _context = context;
+            db = context;
         }
 
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            var Transaction = _context.Transaction.Include(t => t.Product).Include(t => t.User);
-            return View(await Transaction.ToListAsync());
+            return View(await db.Transactions.ToListAsync());
         }
+
+        // GET: Transactions/AddressAndPayment/
+        public ActionResult AddressAndPayment()
+        {
+            var userID = HttpContext.Session.GetInt32("UserID");
+            if (userID != null)
+            {
+                User user = db.Users.Single(user => user.UserId == userID);
+                if (user.Transactions.Count != 0 && user.Transactions.Last() != null && user.Transactions.Last().Paid == false)
+                {
+                    var transId = user.Transactions.Last().TransactionId;
+                    user.Transactions.Remove(user.Transactions.Last());
+                    db.Transactions.Remove(db.Transactions.Single(T => T.TransactionId == transId));
+                }
+                ShoppingCart shoppingCart = new ShoppingCart
+                {
+                    ShoppingCartId = user.UserId.ToString()
+
+                };
+                Transaction transaction = shoppingCart.CreateTransaction(user);
+                if (transaction.Amount != 0)
+                {
+                    user.Transactions.Add(transaction);
+                    db.SaveChanges();
+                    if (transaction != null)
+                    {
+                        TransactionViewModel transactionView = new TransactionViewModel
+                        {
+                            CartItems = db.Products.Where(product => product.CartId == user.UserId.ToString()).ToList(),
+                            amount = transaction.Amount
+                        };
+                        return View(transactionView);
+                    }
+                    else
+                        return RedirectToAction("Index", "Products");
+                }
+
+            }
+            return RedirectToAction("Index", "Products");
+
+        }
+
+
 
         // GET: Transactions/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -33,9 +77,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction
-                .Include(t => t.Product)
-                .Include(t => t.User)
+            var transaction = await db.Transactions
                 .FirstOrDefaultAsync(m => m.TransactionId == id);
             if (transaction == null)
             {
@@ -48,8 +90,6 @@ namespace ShenkinStore.Controllers
         // GET: Transactions/Create
         public IActionResult Create()
         {
-            ViewData["ProductID"] = new SelectList(_context.Products, "ProductId", "ProductId");
-            ViewData["UserID"] = new SelectList(_context.User, "UserId", "UserId");
             return View();
         }
 
@@ -58,16 +98,14 @@ namespace ShenkinStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TransactionId,TransactionDate,UserID,ProductID")] Transaction transaction)
+        public async Task<IActionResult> Create([Bind("TransactionId,Delivery,Paid,TransDate,Amount")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(transaction);
-                await _context.SaveChangesAsync();
+                db.Add(transaction);
+                await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductID"] = new SelectList(_context.Products, "ProductId", "ProductId", transaction.ProductID);
-            ViewData["UserID"] = new SelectList(_context.User, "UserId", "UserId", transaction.UserID);
             return View(transaction);
         }
 
@@ -79,13 +117,11 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction.FindAsync(id);
+            var transaction = await db.Transactions.FindAsync(id);
             if (transaction == null)
             {
                 return NotFound();
             }
-            ViewData["ProductID"] = new SelectList(_context.Products, "ProductId", "ProductId", transaction.ProductID);
-            ViewData["UserID"] = new SelectList(_context.User, "UserId", "UserId", transaction.UserID);
             return View(transaction);
         }
 
@@ -94,7 +130,7 @@ namespace ShenkinStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransactionId,TransactionDate,UserID,ProductID")] Transaction transaction)
+        public async Task<IActionResult> Edit(int id, [Bind("TransactionId,Delivery,Paid,TransDate,Amount")] Transaction transaction)
         {
             if (id != transaction.TransactionId)
             {
@@ -105,8 +141,8 @@ namespace ShenkinStore.Controllers
             {
                 try
                 {
-                    _context.Update(transaction);
-                    await _context.SaveChangesAsync();
+                    db.Update(transaction);
+                    await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -121,8 +157,6 @@ namespace ShenkinStore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductID"] = new SelectList(_context.Products, "ProductId", "ProductId", transaction.ProductID);
-            ViewData["UserID"] = new SelectList(_context.User, "UserId", "UserId", transaction.UserID);
             return View(transaction);
         }
 
@@ -134,9 +168,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction
-                .Include(t => t.Product)
-                .Include(t => t.User)
+            var transaction = await db.Transactions
                 .FirstOrDefaultAsync(m => m.TransactionId == id);
             if (transaction == null)
             {
@@ -151,15 +183,15 @@ namespace ShenkinStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var transaction = await _context.Transaction.FindAsync(id);
-            _context.Transaction.Remove(transaction);
-            await _context.SaveChangesAsync();
+            var transaction = await db.Transactions.FindAsync(id);
+            db.Transactions.Remove(transaction);
+            await db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TransactionExists(int id)
         {
-            return _context.Transaction.Any(e => e.TransactionId == id);
+            return db.Transactions.Any(e => e.TransactionId == id);
         }
     }
 }

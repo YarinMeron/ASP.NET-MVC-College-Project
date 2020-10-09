@@ -5,6 +5,9 @@ namespace ShenkinStore.Models
 {
     public class Product
     {
+        public bool sold { get; set; }
+        public bool inCart { get; set; }
+
         public int ProductId { get; set; }
 
         [Display(Name = "Product Name")]
@@ -29,5 +32,6 @@ namespace ShenkinStore.Models
         public string Metrial { get; set; }
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
+        public string CartId { get; set; }
     }
 }

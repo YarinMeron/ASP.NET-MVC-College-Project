@@ -60,7 +60,7 @@ namespace ShenkinStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,Colorr,productType,productBrand,gender,Description,Quantity,Metrial,ImageUrl")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,sold,inCart,Colorr,productType,productBrand,gender,Description,Quantity,Metrial,ImageUrl")] Product product)
         {
 
 
@@ -159,5 +159,16 @@ namespace ShenkinStore.Controllers
         {
             return _context.Products.Any(e => e.ProductId == id);
         }
+
+
+        //public ActionResult _ProductList()
+        //{ 
+            
+
+          
+        //    return View(new Product());
+        //}
+
+
     }
 }

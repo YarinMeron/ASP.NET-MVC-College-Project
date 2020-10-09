@@ -13,20 +13,25 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TransactionId" />
-            <div class="form-group">
-                <label asp-for="TransactionDate" class="control-label"></label>
-                <input asp-for="TransactionDate" class="form-control" />
-                <span asp-validation-for="TransactionDate" class="text-danger"></span>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Delivery" /> @Html.DisplayNameFor(model => model.Delivery)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Paid" /> @Html.DisplayNameFor(model => model.Paid)
+                </label>
             </div>
             <div class="form-group">
-                <label asp-for="UserID" class="control-label"></label>
-                <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID"></select>
-                <span asp-validation-for="UserID" class="text-danger"></span>
+                <label asp-for="TransDate" class="control-label"></label>
+                <input asp-for="TransDate" class="form-control" />
+                <span asp-validation-for="TransDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductID" class="control-label"></label>
-                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductID"></select>
-                <span asp-validation-for="ProductID" class="text-danger"></span>
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -39,6 +44,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

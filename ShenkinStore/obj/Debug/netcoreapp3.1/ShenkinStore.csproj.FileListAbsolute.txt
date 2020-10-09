@@ -182,9 +182,6 @@ C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.csproj.CoreCompileInputs.cache
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Create.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Delete.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Details.cshtml.g.cs
@@ -195,11 +192,6 @@ C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Details.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Create.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Delete.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Details.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Edit.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Index.cshtml.g.cs
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -408,3 +400,15 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AccsView.cshtml.g.cs
 C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
 C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Register.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Create.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Delete.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Details.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Edit.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Index.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Host.dll
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.csproj.CoreCompileInputs.cache
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\CartSummary.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
+C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Shop.cshtml.g.cs
