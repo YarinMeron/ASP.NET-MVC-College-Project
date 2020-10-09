@@ -9900,7 +9900,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.8",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
+      "System.Collections >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -9909,11 +9910,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+      "projectUniqueName": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
       "projectName": "ShenkinStore",
-      "projectPath": "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+      "projectPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
       "packagesPath": "C:\\Users\\eliordayari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\eliordayari\\Source\\Repos\\ShenkinStore\\ShenkinStore\\obj\\",
+      "outputPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\eliordayari\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9983,6 +9984,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.1.4, )"
+          },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

@@ -26,46 +26,7 @@ namespace ShenkinStore.Controllers
             return View(await db.Transactions.ToListAsync());
         }
 
-        // GET: Transactions/AddressAndPayment/
-        public ActionResult AddressAndPayment()
-        {
-            var userID = HttpContext.Session.GetInt32("UserID");
-            if (userID != null)
-            {
-                User user = db.Users.Single(user => user.UserId == userID);
-                if (user.Transactions.Count != 0 && user.Transactions.Last() != null && user.Transactions.Last().Paid == false)
-                {
-                    var transId = user.Transactions.Last().TransactionId;
-                    user.Transactions.Remove(user.Transactions.Last());
-                    db.Transactions.Remove(db.Transactions.Single(T => T.TransactionId == transId));
-                }
-                ShoppingCart shoppingCart = new ShoppingCart
-                {
-                    ShoppingCartId = user.UserId.ToString()
-
-                };
-                Transaction transaction = shoppingCart.CreateTransaction(user);
-                if (transaction.Amount != 0)
-                {
-                    user.Transactions.Add(transaction);
-                    db.SaveChanges();
-                    if (transaction != null)
-                    {
-                        TransactionViewModel transactionView = new TransactionViewModel
-                        {
-                            CartItems = db.Products.Where(product => product.CartId == user.UserId.ToString()).ToList(),
-                            amount = transaction.Amount
-                        };
-                        return View(transactionView);
-                    }
-                    else
-                        return RedirectToAction("Index", "Products");
-                }
-
-            }
-            return RedirectToAction("Index", "Products");
-
-        }
+       
 
 
 
@@ -88,9 +49,18 @@ namespace ShenkinStore.Controllers
         }
 
         // GET: Transactions/Create
-        public IActionResult Create()
+        // Using filter to allow access only to login users.
+        //[Authorize] - TODO: uncomment before you go live
+        public ActionResult Create()
         {
-            return View();
+            var userID = HttpContext.Session.GetInt32("UserID");
+            if (userID != null)
+            {
+
+                return View();
+            }
+            return RedirectToAction("Login", "Users");
+
         }
 
         // POST: Transactions/Create
@@ -102,9 +72,11 @@ namespace ShenkinStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Add(transaction);
+               // db.Add(transaction);
+                db.Transactions.Add(transaction);
                 await db.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create");
             }
             return View(transaction);
         }
@@ -193,5 +165,68 @@ namespace ShenkinStore.Controllers
         {
             return db.Transactions.Any(e => e.TransactionId == id);
         }
+
+        // GET: Transactions/AddressAndPayment/
+        public ActionResult AddressAndPayment()
+        {
+            var userID = HttpContext.Session.GetInt32("UserID");
+            if (userID != null)
+            {
+
+                User user = db.Users.Single(user => user.UserId == userID);
+
+                if (user.Transactions == null)
+                {
+                    user.Transactions = new List<Transaction>();
+                }
+
+
+
+                if (user.Transactions.Count != 0 && user.Transactions.Last() != null && user.Transactions.Last().Paid == false)
+                {
+                    var transId = user.Transactions.Last().TransactionId;
+                    user.Transactions.Remove(user.Transactions.Last());
+                    db.Transactions.Remove(db.Transactions.Single(T => T.TransactionId == transId));
+                }
+                ShoppingCart shoppingCart = new ShoppingCart
+                {
+                    ShoppingCartId = HttpContext.Session.GetString("UserID").ToString() 
+                //ShoppingCartId = user.UserId.ToString()
+           
+
+                };
+                
+                Transaction transaction = shoppingCart.CreateTransaction(shoppingCart);
+                if (transaction.Amount != 0)
+                {
+                    //user.Transactions = new List<Transaction>();
+                    user.Transactions.Add(transaction);
+                   // shoppingCart.emptyCart();
+                   
+                    db.SaveChanges();
+                    if (transaction != null)
+                    {
+                        TransactionViewModel transactionView = new TransactionViewModel
+                        {
+                            CartItems = db.Products.Where(product => product.CartId == user.UserId.ToString()).ToList(),
+                            amount = transaction.Amount
+                        };
+                    
+                
+                        //return View(transactionView);    // We can redirect to wherever we want..
+                        return RedirectToAction("emptyCart", "ShoppingCart");
+                    }
+                    else
+                        return RedirectToAction("Index", "Transactions");
+                }
+
+            }
+            return RedirectToAction("Index", "Products");
+
+        }
+
+
+
+
     }
 }

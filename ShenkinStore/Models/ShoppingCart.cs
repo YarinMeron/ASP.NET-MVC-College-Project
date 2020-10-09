@@ -16,6 +16,7 @@ namespace ShenkinStore.Models
         public string ShoppingCartId { get; set; }
 
         public const String CartSessionKey = "cartId";
+      
 
 
         // Funcs
@@ -27,7 +28,7 @@ namespace ShenkinStore.Models
         public static ShoppingCart GetCart(string UserId)
         {
             var cart = new ShoppingCart();
-            cart.ShoppingCartId = UserId;
+            cart.ShoppingCartId = UserId.ToString();
             return cart;
         }
 
@@ -124,11 +125,29 @@ namespace ShenkinStore.Models
 
 
         }
+        public decimal GetTotal2()
+        {
+            IEnumerable<decimal> list =
+   from product in db.Products
+   where product.CartId == ShoppingCartId
+   orderby product descending
+   select product.Price;
+            if (list != null)
+            {
+                decimal sum = list.Sum();
+                // return list.Sum();
+                return sum;
+            }
+            else
+                return 0;
+
+
+        }
 
 
         // GetCartId will return CartId or will create one
 
-            public string GetCartId(HttpContext context)
+        public string GetCartId(HttpContext context)
         {
             
             if (context.Session.GetString("CartSessionKey")==null)
@@ -147,29 +166,35 @@ namespace ShenkinStore.Models
             }
 
             
-            return context.Session.GetString("CartSessionKey").ToString();//maybe "tostring" is not nesscury
+            return context.Session.GetString("CartSessionKey");//maybe "tostring" is not nesscury
         }
 
 
 
 
         //Will auto create Transaction when you proceed to Payment
-        public Transaction CreateTransaction(User user)
+        public Transaction CreateTransaction(ShoppingCart shoppingcart)
         {
-            var transcation = new Transaction
-            {
-               
-                Delivery = false,
-                Paid = false,
-                TransDate = DateTime.Now,
-               // Amount=0
-                Amount = this.GetTotal(),
-                // Cart = this
-            };
+            //var transcation = new Transaction
+            //{
+
+            //    Delivery = false,
+            //    Paid = false,
+            //    TransDate = DateTime.Now,
+            //   // Amount=0
+            //    Amount = this.GetTotal(),
+            //    // Cart = this
+            //};
+            Transaction transaction = new Transaction();
+            transaction.Delivery = false;
+            transaction.Paid = false;
+            transaction.TransDate = DateTime.Now;
+             transaction.Amount = shoppingcart.GetTotal2();
+            //transaction.Amount = shoppingcart.GetTotal();
 
             // db.Transactions.Add(transcation);
             //  db.SaveChanges();
-            return transcation;
+            return transaction;
         }
         }
 }

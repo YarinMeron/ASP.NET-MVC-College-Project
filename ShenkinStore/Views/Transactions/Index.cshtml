@@ -1,10 +1,7 @@
 ﻿@model IEnumerable<ShenkinStore.Models.Transaction>
 
 @{ ViewBag.Title = "Index"; }
-<h2>גרף הטרנזקציות</h2>
-<link rel="stylesheet" type="text/css" media="all" href="~/Content/chart.css">
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="~/Scripts/charts.js"></script>
+
 
 
 <h2>Index</h2>
@@ -16,13 +13,7 @@
 <div class="text-left col-12 form-zone">
     <div class="row" style="margin:10px; padding-right:10px">
         <form asp-controller="Transactions" asp-action="Index">
-            <p>
-                <input type="date" name="dateStart" title="תאריך התחלה" />
-                <input type="date" name="dateEnd" title="תאריך סיום" />
-                <input type="number" name="totalMin" placeholder="סכום מינימלי" />
-                <input type="number" name="totalMax" placeholder="סכום מקסימלי" />
-                <input type="submit" value="חיפוש" />
-            </p>
+            
         </form>
     </div>
 </div>
@@ -30,16 +21,16 @@
 <table class="table text-right">
     <tr>
         <th>
-            מספר
+            Transaction Number
         </th>
         <th>
-            תאריך
+            Date
         </th>
         <th>
-            מחיר
+            Price
         </th>
         <th>
-            שולם
+            Paid
         </th>
         <th></th>
     </tr>
@@ -70,58 +61,3 @@
 
 
 
-
-
-@*@model IEnumerable<ShenkinStore.Models.Transaction>
-
-    @{
-        ViewData["Title"] = "Index";
-    }
-
-    <h1>Index</h1>
-
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Delivery)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Paid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TransDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Amount)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Delivery)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Paid)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TransDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.TransactionId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.TransactionId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.TransactionId">Delete</a>
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>*@

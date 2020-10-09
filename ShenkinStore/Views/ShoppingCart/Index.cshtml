@@ -1,7 +1,7 @@
 ﻿@model ShenkinStore.ViewModels.ShoppingCartViewModel
 
 @{ ViewBag.Title = "Store Checkout";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h3 class="text-right">
     <span>Your Cart</span>
@@ -10,12 +10,12 @@
 @if (Model.CartItems.Count == 0)
 {
 <a class="btn btn-danger text-right middle-block" href='@Url.Action("Index", "Products")'>Your Cart is empty continue buy</a> }
-            else
-            {
+else
+{
 <table class="table-responsive table-bordered table-striped">
     <tr class="text-right">
         <th>
-           Product Name
+            Product Name
         </th>
 
         <th>
@@ -39,11 +39,12 @@
     <td class="text-right">
         @Html.ActionLink("Remove From Cart", "removefromcart", "ShoppingCart", new { id = item.ProductId }, null);
     </td>
-</tr>}
-                }
+</tr>
+}
+}
     <tr class="text-right">
         <td>
-                Total:
+            Total:
         </td>
         <td></td>
         <td id="cart-total" class="text-right">
@@ -55,8 +56,10 @@
                 <p class="button">
                     <a class="btn btn-danger" href='@Url.Action("Index", "Home")'>Continue Buy</a>
                 </p>
-                 <p class="button">
-                     <a class="btn btn-danger" href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
-                   </p>
-                   }
+                                <p class="button">
+                                    <a class="btn btn-danger" href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
+                                </p>
+                                                <p class="button">
+                                                    <a class="btn btn-danger" href='@Url.Action("emptyCart", "ShoppingCart")'> Empty Cart</a>
+                                                </p>}
 

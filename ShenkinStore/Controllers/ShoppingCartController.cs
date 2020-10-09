@@ -21,8 +21,9 @@ namespace ShenkinStore.Controllers
         public ActionResult Index()
         {
          
+          //  var userID = HttpContext.Session.GetString("UserID");
+
             var userID = HttpContext.Session.GetString("UserID");
-            
             
             
             
@@ -33,7 +34,7 @@ namespace ShenkinStore.Controllers
                 var viewModel = new ShoppingCartViewModel
                 {
                     CartItems = cart.GetCartItems(),
-                    CartTotal = cart.GetTotal()
+                    CartTotal = cart.GetTotal2()
                 };
                 return View(viewModel);
             }
@@ -73,11 +74,39 @@ namespace ShenkinStore.Controllers
 
         }
 
+        public ActionResult emptyCart()
+        {
+            var userID = HttpContext.Session.GetString("UserID");
+            if (userID != null)
+            {
+
+                var cart = ShoppingCart.GetCart(userID.ToString());
+                var cartItems = db.Products.Where(product => product.CartId == cart.ShoppingCartId);
+                foreach (var cartItem in cartItems)
+                {
+              
+                    cart.RemoveFromCart(cartItem);
+                }
+                db.SaveChanges();
+
+
+
+                return RedirectToAction("Index", "ShoppingCart");
+            }
+            else
+                return RedirectToAction("Login", "Users");
+
+        }
+
+
+
+
+
         /* Maybe We will need it on Future
          * For [ChildActionOnly]
          * See https://stackoverflow.com/questions/10253769/using-childactiononly-in-mvc
          */
-   //     [ChildActionOnly]
+        //     [ChildActionOnly]
         public ActionResult CartSummary()
         {
             var userID = HttpContext.Session.GetString("UserID");
@@ -93,7 +122,11 @@ namespace ShenkinStore.Controllers
                 return RedirectToAction("Login", "Users");
         }
 
-       //credit to:  https://stackoverflow.com/questions/10134406/why-is-there-need-for-an-explicit-dispose-method-in-asp-net-mvc-controllers-c
+
+        
+
+        //Kind of Grabge Collector, unmanneged
+        //credit to:  https://stackoverflow.com/questions/10134406/why-is-there-need-for-an-explicit-dispose-method-in-asp-net-mvc-controllers-c
         protected override void Dispose(bool disposing)
         {
             if (disposing)

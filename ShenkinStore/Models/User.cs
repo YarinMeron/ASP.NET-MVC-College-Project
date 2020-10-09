@@ -36,6 +36,6 @@ namespace ShenkinStore.Models
          public UserType userType { get; set; }
        
         public DateTime CreatedOn { get; set; }
-        public ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
