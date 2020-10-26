@@ -12,6 +12,7 @@
 <table class="table">
     <thead>
         <tr>
+           
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
@@ -48,6 +49,8 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            @if (item.inCart == false)
+            {
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -79,7 +82,16 @@
                 <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
             </td>
             <td class="text-center">
-                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId}, new { @class = "btn btn-info" })
+                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, x = item.Quantity }, new { @class = "btn btn-info" })
+            </td>
+            <td class="text-center">
+                <div class="form-group">
+                    <label asp-for="@item.Quantity" class="control-label"></label>
+                    <input asp-for="@item.Quantity" class="form-control" />
+                    <span asp-validation-for="@item.Quantity" class="text-danger"></span>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+               
             </td>
 
 
@@ -89,6 +101,7 @@
                 <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
 
             </td>
+            }
         </tr>
 }
     </tbody>

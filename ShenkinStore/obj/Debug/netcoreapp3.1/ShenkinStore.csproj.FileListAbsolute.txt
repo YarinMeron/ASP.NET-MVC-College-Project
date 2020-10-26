@@ -411,3 +411,4 @@ C:\Users\eliordayari\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.csproj.CoreCompileInputs.cache
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\newCart.cshtml.g.cs

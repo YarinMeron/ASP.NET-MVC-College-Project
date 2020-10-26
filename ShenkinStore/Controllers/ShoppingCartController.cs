@@ -20,13 +20,8 @@ namespace ShenkinStore.Controllers
 
         public ActionResult Index()
         {
-         
-          //  var userID = HttpContext.Session.GetString("UserID");
-
+  
             var userID = HttpContext.Session.GetString("UserID");
-            
-            
-            
             if (userID != null)
             {
                 var cart = ShoppingCart.GetCart(userID.ToString());
@@ -34,28 +29,40 @@ namespace ShenkinStore.Controllers
                 var viewModel = new ShoppingCartViewModel
                 {
                     CartItems = cart.GetCartItems(),
-                    CartTotal = cart.GetTotal2()
+                    CartTotal = cart.GetTotal()
                 };
                 return View(viewModel);
             }
             else
+            {
                 return RedirectToAction("Index", "Home");
+            }
         }
+      
 
         // GET: ShoppingCart/AddToCart/id
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int id,int x)
         {
             var userID = HttpContext.Session.GetString("UserID");
             if (userID != null)
             {
                 var addedProduct = db.Products.Single(product => product.ProductId == id);
                 var cart = ShoppingCart.GetCart(userID.ToString());
+                for (int i = 0; i < x; i++)
+                {
+
                 cart.AddToCart(addedProduct);
-               
+                }
+                
+
+                
+
                 return RedirectToAction("Index", "ShoppingCart");
             }
             else
+            {
                 return RedirectToAction("Login", "Users");
+            }
         }
 
         // GET: ShoppingCart/RemoveFromCart/id
@@ -66,11 +73,14 @@ namespace ShenkinStore.Controllers
             {
                 var cart = ShoppingCart.GetCart(userID.ToString());
                 Product product = db.Products.FirstOrDefault(item => item.ProductId == id);
+                
                 cart.RemoveFromCart(product);
                 return RedirectToAction("Index", "ShoppingCart");
             }
             else
+            {
                 return RedirectToAction("Login", "Users");
+            }
 
         }
 
@@ -84,7 +94,7 @@ namespace ShenkinStore.Controllers
                 var cartItems = db.Products.Where(product => product.CartId == cart.ShoppingCartId);
                 foreach (var cartItem in cartItems)
                 {
-              
+
                     cart.RemoveFromCart(cartItem);
                 }
                 db.SaveChanges();
@@ -94,8 +104,9 @@ namespace ShenkinStore.Controllers
                 return RedirectToAction("Index", "ShoppingCart");
             }
             else
+            {
                 return RedirectToAction("Login", "Users");
-
+            }
         }
 
 
@@ -119,7 +130,9 @@ namespace ShenkinStore.Controllers
                 return PartialView("CartSummary");
             }
             else
+            {
                 return RedirectToAction("Login", "Users");
+            }
         }
 
 

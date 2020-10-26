@@ -161,14 +161,5 @@ namespace ShenkinStore.Controllers
         }
 
 
-        //public ActionResult _ProductList()
-        //{ 
-            
-
-          
-        //    return View(new Product());
-        //}
-
-
     }
 }
