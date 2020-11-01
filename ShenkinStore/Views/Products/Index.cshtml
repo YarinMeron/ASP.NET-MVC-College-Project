@@ -111,8 +111,6 @@
 <link rel="stylesheet" type="text/css" href="~/css/ProductsGrid.css" />
 
 
-<div style="margin:50px; padding:50px;">SOME NAV BA</div>
-
 
 <div class="shell">
     <div class="container">
@@ -136,16 +134,16 @@
                                 <p>@item.Description</p>
                             </div>
                             <div class="card-footer">
-                                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+                                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>|
                                 <a asp-action="Details" asp-route-id="@item.ProductId">Add To Cart</a>
-                                <div class="wcf-left"><span class="price">@item.Price</span></div>
+                                <div class="wcf-left"><span class="price">(int)@item.Price</span></div>
                                 <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-       
-        }
+
+            }
         </div>
     </div>
-    </div>
+</div>
