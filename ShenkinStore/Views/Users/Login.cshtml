@@ -3,65 +3,24 @@
 @{
     ViewData["Title"] = "Login";
 }
+<link rel=" stylesheet" href="~/css/login.css" />
+@using (Html.BeginForm("Login", "Users", FormMethod.Post, new { @class = "box" }))
+{
 
-<fieldset>
-    <legend>
+    @Html.LabelFor(model => model.UserName)
 
-    </legend>
-    @using (Html.BeginForm("Login", "Users", FormMethod.Post))
-    {
-        <table>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.UserName)
-                </td>
-                <td>
-                    @Html.TextBoxFor(model => model.UserName)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td colspan="2">
-                    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(model => model.Password)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td colspan="2">
-                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="submit" value="Login" />
-                            </td>
-                            <td>
-                                <input type="reset" value="Reset" />
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+    @Html.TextBoxFor(model => model.UserName)
 
-            </tr>
-            <tr>
-                <td>
-                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" });
-                </td>
-            </tr>
-        </table>
-    }
+    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text text-danger" })
 
-</fieldset>
+    @Html.LabelFor(model => model.Password)
+
+    @Html.PasswordFor(model => model.Password)
+
+    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
+
+    <input type="submit" value="Login" />
+
+    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+
+}
