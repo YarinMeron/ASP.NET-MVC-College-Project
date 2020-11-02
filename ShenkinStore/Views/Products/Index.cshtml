@@ -109,39 +109,103 @@
 *@
 
 <link rel="stylesheet" type="text/css" href="~/css/ProductsGrid.css" />
+@if (Context.Session.GetInt32("UserType") == 1)
+{
+    <p>
+        {
+        <a asp-action="Create">Create New</a>
+        }
+    </p>
+}
+<div class="container">
+    <div class="dropdown" style="margin:40px; padding:30px">
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+            SortBy
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Price Low To High</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Price High To Low</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Best For You </a></li>
+            <li role="presentation" class="divider"></li>
+        </ul>
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+            ProductType
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HandBags</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SideBags</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Wallets</a></li>
+            <li role="presentation" class="divider"></li>
+        </ul>
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+            Colors
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">White</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Blue</a></li>
+            <li role="presentation" class="divider"></li>
+        </ul>
+    </div>
+</div>
 
 
 
 <div class="shell">
-    <div class="container">
+    <div>
         <div class="row">
-
+            @{ int counter = 0;}
             @foreach (var item in Model)
             {
-                <div class="col-md-3">
-                    <div class="wsk-cp-product">
-                        <div class="wsk-cp-img">
-                            <img src="~/Photos/4ea1cdc6e9544afc5101ab0de8a8d15a.jpg" alt="Product" class="img-responsive" />
-                        </div>
-                        <div class="wsk-cp-text">
-                            <div class="category">
-                                <span>@item.ProductName</span>
+                if (counter % 4 == 0)
+                {
+                    <div class="col-md-3">
+                        <div class="wsk-cp-product">
+                            <div class="wsk-cp-img">
+                                <img src="~/Photos/4ea1cdc6e9544afc5101ab0de8a8d15a.jpg" alt="Product" class="img-responsive" />
                             </div>
-                            <div class="title-product">
-                                <h3></h3>
-                            </div>
-                            <div class="description-prod">
-                                <p>@item.Description</p>
-                            </div>
-                            <div class="card-footer">
-                                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>|
-                                <a asp-action="Details" asp-route-id="@item.ProductId">Add To Cart</a>
-                                <div class="wcf-left"><span class="price">(int)@item.Price</span></div>
-                                <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+                            <div class="wsk-cp-text">
+                                <div class="category">
+                                    <span>Fashion</span>
+                                </div>
+                                <div class="title-product">
+                                    <h3>@item.ProductName</h3>
+                                </div>
+                                <div class="description-prod">
+                                    <p>@item.Description</p>
+                                </div>
+                                @if (Context.Session.GetInt32("UserType") == 1)
+                                {
+                                    <ul>
+                                        <tr>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>|
+                                                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </ul>
+
+                                }
+                                <div>
+                                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>|
+                                    <a asp-action="Details" asp-route-id="@item.ProductId">Add To Cart</a>
+                                </div>
+                                <div class="wcf-right"><a href=@Url.Action("Details","Products",new { id = @item.ProductId }) class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+
+                                @*<div class="card-footer">
+
+                                        <div class="wcf-left"><span class="price">(@item.Price</span></div>
+                                        <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+                                    </div>*@
                             </div>
                         </div>
                     </div>
-                </div>
+
+                }
+
 
             }
         </div>

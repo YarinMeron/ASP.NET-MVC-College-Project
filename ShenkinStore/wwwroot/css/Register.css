@@ -1,12 +1,5 @@
 ﻿body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: antiquewhite; /* Used if the image is unavailable */
     background-image: url('../Photos/4ea1cdc6e9544afc5101ab0de8a8d15a.jpg');
-    height: 500px; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
 }
 
 .box {
