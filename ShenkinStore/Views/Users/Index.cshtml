@@ -4,7 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 @{
 
     var UserType = Context.Session.GetInt32("UserType");
@@ -72,6 +71,6 @@
     }
     else // user
     {
-        <h1>You can not view this page</h1>
+        <h1><b>You can not view this page</b></h1>
     }
 }
