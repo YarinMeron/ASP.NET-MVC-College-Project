@@ -205,3 +205,19 @@ ul.rig {
             margin: 0 0 10px;
         }
 }
+
+#Product_side {
+    width: 100px;
+    height: 100px;
+    background: #BBB;
+    transition: width 3s;
+}
+
+    #Product_side:hover {
+        width: 200px;
+    }
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"), url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+}
