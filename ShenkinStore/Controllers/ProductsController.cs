@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using Facebook;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShenkinStore.Models;
-using static ShenkinStore.Models.Product;
+
 
 namespace ShenkinStore.Controllers
 {
@@ -50,7 +52,7 @@ namespace ShenkinStore.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            
+
 
             return View();
         }
@@ -68,8 +70,10 @@ namespace ShenkinStore.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                facebook(product.ProductName, product.Price, product.ImageUrl);
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(product);
         }
 
@@ -77,7 +81,7 @@ namespace ShenkinStore.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
 
-            
+
             if (id == null)
             {
                 return NotFound();
@@ -159,7 +163,7 @@ namespace ShenkinStore.Controllers
         {
             return _context.Products.Any(e => e.ProductId == id);
         }
-       
+
         public async Task<IActionResult> BackPacks()
         {
             return View(await _context.Products.ToListAsync());
@@ -170,7 +174,25 @@ namespace ShenkinStore.Controllers
         }
         public async Task<IActionResult> Wallets()
         {
+            
             return View(await _context.Products.ToListAsync());
         }
-    }
+
+        public void facebook(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
+        {
+            dynamic messagePost = new ExpandoObject();
+            messagePost.message = "hello this is " + @ProductImage + " " ;
+
+            string acccessToken = "EAAmb3DCJ50oBAHGMoZC3QqNrXOSlG5r2HcOgmHmaWLBzjtcqNFH6BdacKP6plTUpaZB4X2kMl06O9rZAuSiiEH5eDeZAZBgZCKyLVA89HWZCnP02w7sN28z9BKYuenY1fJ1WH4y7kLIvKOLEB9YaF8cglvbVKSnjcSzeUrmIDnrfn7NRBSQKHKQrgTCXDXIH1kZD";
+            FacebookClient appp = new FacebookClient(acccessToken); 
+            try
+            {
+                var postId = appp.Post("120440503196052" + "/feed", messagePost);
+            }
+            catch (FacebookOAuthException ex)
+            { //handle oauth exception } catch (FacebookApiException ex) { //handle facebook exception
+            }
+
+        }
+    } 
 }
