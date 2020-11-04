@@ -73,7 +73,6 @@ namespace ShenkinStore.Controllers
                 facebook(product.ProductName, product.Price, product.ImageUrl);
                 return RedirectToAction(nameof(Index));
             }
-            
             return View(product);
         }
 
@@ -174,18 +173,16 @@ namespace ShenkinStore.Controllers
         }
         public async Task<IActionResult> Wallets()
         {
-            
             return View(await _context.Products.ToListAsync());
         }
 
         public void facebook(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
         {
             dynamic messagePost = new ExpandoObject();
-            messagePost.message = "hello this is " + @ProductImage + " " ;
+            messagePost.message = "Ladies and Gentlemen New Flight upload to our site from Hurry up to sign up";
 
-            string acccessToken = "EAAmb3DCJ50oBAHGMoZC3QqNrXOSlG5r2HcOgmHmaWLBzjtcqNFH6BdacKP6plTUpaZB4X2kMl06O9rZAuSiiEH5eDeZAZBgZCKyLVA89HWZCnP02w7sN28z9BKYuenY1fJ1WH4y7kLIvKOLEB9YaF8cglvbVKSnjcSzeUrmIDnrfn7NRBSQKHKQrgTCXDXIH1kZD";
-            FacebookClient appp = new FacebookClient(acccessToken); 
-            try
+            string acccessToken = "EAAFjnLLJDO0BAA3cpMU0Fko2Y6tJAf8LLZCWUsfZAoJ7D0MHfCoveQT3rTJBoljjqezgUpcOLKjHUy4MZAeZBsbEOsWvFwM351TLHlFNFIHyp6PMf3jh3ZAFgWu9wv88tZCSGn1ZC1GL75VHVZCnKV0aWhlNuiPwK9A87kkxFGWZC6QZDZD";
+            FacebookClient appp = new FacebookClient(acccessToken); try
             {
                 var postId = appp.Post("120440503196052" + "/feed", messagePost);
             }
