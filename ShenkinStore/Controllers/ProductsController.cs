@@ -70,7 +70,7 @@ namespace ShenkinStore.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                facebook(product.ProductName, product.Price, product.ImageUrl);
+                facebook(product.ProductName, product.Price, product.ImageUrl); // checking out git cmds
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
