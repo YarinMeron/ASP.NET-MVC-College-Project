@@ -70,7 +70,7 @@ namespace ShenkinStore.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                facebook(product.ProductName, product.Price, product.ImageUrl); // checking out git cmds
+                postProductOnFacebookPage(product.ProductName, product.Price, product.ImageUrl); // checking out git cmds
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -163,20 +163,8 @@ namespace ShenkinStore.Controllers
             return _context.Products.Any(e => e.ProductId == id);
         }
 
-        public async Task<IActionResult> BackPacks()
-        {
-            return View(await _context.Products.ToListAsync());
-        }
-        public async Task<IActionResult> SideBags()
-        {
-            return View(await _context.Products.ToListAsync());
-        }
-        public async Task<IActionResult> Wallets()
-        {
-            return View(await _context.Products.ToListAsync());
-        }
-
-        public void facebook(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
+     
+        public void postProductOnFacebookPage(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
         {
             dynamic messagePost = new ExpandoObject();
             messagePost.message = "New product is in the shop !";
@@ -187,7 +175,8 @@ namespace ShenkinStore.Controllers
                 var postId = appp.Post("120440503196052" + "/feed", messagePost);
             }
             catch (FacebookOAuthException ex)
-            { //handle oauth exception } catch (FacebookApiException ex) { //handle facebook exception
+            {
+                System.Console.WriteLine("FacebookOAuthException - postId is null");
             }
 
         }
