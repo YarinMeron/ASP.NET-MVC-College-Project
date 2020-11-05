@@ -179,7 +179,7 @@ namespace ShenkinStore.Controllers
         public void facebook(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
         {
             dynamic messagePost = new ExpandoObject();
-            messagePost.message = "Ladies and Gentlemen New Flight upload to our site from Hurry up to sign up";
+            messagePost.message = "New product is in the shop !";
 
             string acccessToken = "EAAFjnLLJDO0BAA3cpMU0Fko2Y6tJAf8LLZCWUsfZAoJ7D0MHfCoveQT3rTJBoljjqezgUpcOLKjHUy4MZAeZBsbEOsWvFwM351TLHlFNFIHyp6PMf3jh3ZAFgWu9wv88tZCSGn1ZC1GL75VHVZCnKV0aWhlNuiPwK9A87kkxFGWZC6QZDZD";
             FacebookClient appp = new FacebookClient(acccessToken); try
