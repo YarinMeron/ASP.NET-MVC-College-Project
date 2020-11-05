@@ -29,7 +29,9 @@ namespace ShenkinStore.Controllers
                 var viewModel = new ShoppingCartViewModel
                 {
                     CartItems = cart.GetCartItems(),
-                    CartTotal = cart.GetTotal()
+                    CartTotal = cart.GetTotal(),
+                    Amounts = cart.GetAmount(),
+                    TotalPricePerProduct = cart.GetProductTotal()
                 };
                 return View(viewModel);
             }
@@ -41,18 +43,17 @@ namespace ShenkinStore.Controllers
       
 
         // GET: ShoppingCart/AddToCart/id
-        public ActionResult AddToCart(int id,int x)
+        public ActionResult AddToCart(int id,int amount)
         {
             var userID = HttpContext.Session.GetString("UserID");
             if (userID != null)
             {
                 var addedProduct = db.Products.Single(product => product.ProductId == id);
                 var cart = ShoppingCart.GetCart(userID.ToString());
-                for (int i = 0; i < x; i++)
-                {
+                
 
-                cart.AddToCart(addedProduct);
-                }
+                cart.AddToCart(addedProduct,amount);
+                
                 
 
                 
@@ -63,6 +64,29 @@ namespace ShenkinStore.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+        }
+
+
+        public ActionResult IncreaseProduct(int id)
+        {
+            var userID = HttpContext.Session.GetString("UserID");
+           
+                var cart = ShoppingCart.GetCart(userID.ToString());
+                cart.IncreaseAmount(id);
+            return RedirectToAction("Index","ShoppingCart");
+                
+            
+           
+            }
+        public ActionResult DecreaseProduct(int id)
+        {
+            var userID = HttpContext.Session.GetString("UserID");
+
+            var cart = ShoppingCart.GetCart(userID.ToString());
+            cart.DecreaseAmount(id);
+            return RedirectToAction("Index", "ShoppingCart");
+
+
         }
 
         // GET: ShoppingCart/RemoveFromCart/id

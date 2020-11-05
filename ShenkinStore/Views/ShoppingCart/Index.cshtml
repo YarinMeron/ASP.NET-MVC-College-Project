@@ -31,53 +31,73 @@
                 <th class="th">
                     Price
                 </th>
-                <th class="th">
+                <th class="th tuck ">
                     Amount
                 </th>
 
                 <th class="th">
                     Photo
                 </th>
-                <th class="th">
 
+                <th class="th">
+                    Total per amounts
                 </th>
 
 
-
-
-
-
             </tr>
+
             @foreach (var item in Model.CartItems)
             {
-                if (item.sold == false)
-                {
-                    <tr id="row-@item.ProductId">
-                        <td class=" fonts">
-                            @*@Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, null)*@
-                            <a class="fonts links" href='@Url.Action( "Details", "Products", new { id = item.ProductId }, null)'>@item.ProductName</a>
-                        </td>
-                        <td class=" fonts">
-                            @item.Price ₪
-                        </td>
-                        <td class="fonts">
+                
+        <tr id="row-@item.ProductId">
+            <td class=" fonts">
+                @*@Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, null)*@
+                <a class="fonts links" href='@Url.Action( "Details", "Products", new { id = item.ProductId }, null)'>@item.ProductName</a>
+            </td>
+            <td class=" fonts">
+                @item.Price ₪
+            </td>
+            <td   >
 
-                            @Html.DisplayFor(modelItem => item.Quantity)
+         
 
-                        </td>
+                <div class="col col-qty tuck layout-inline align-center" >
+                    <section c width="100px">
 
-                        <td class=" fonts links">
-                            <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
-                        </td>
-                        <td class=" fonts text-right">
+                        <a href='@Url.Action("IncreaseProduct", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
 
-                            @*<a class="fonts links" href='@Url.Action("removefromcart", "ShoppingCart", new { id = item.ProductId }, null)'>Remove</a>*@
-                            <a href='@Url.Action("removefromcart", "ShoppingCart", new { id = item.ProductId }, null)' class="remove">x</a>
-                        </td>
+                        <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1" class="align-center" />
 
-                    </tr>
+                        <a href='@Url.Action("DecreaseProduct", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
+                    </section>
+                </div>
+
+            </td>
+
+
+            <td class=" fonts links">
+                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+            </td>
+           
+            <td class="fonts">
+
+
+                @Model.TotalPricePerProduct[item.ProductId]
+
+            </td>
+
+
+
+            <td class=" fonts text-right">
+
+       
+                <a href='@Url.Action("removefromcart", "ShoppingCart", new { id = item.ProductId }, null)' class="remove">x</a>
+            </td>
+
+
+        </tr>
                 }
-            }
+            
             <tr class="text-right">
                 <td class="fonts">
                     Total:

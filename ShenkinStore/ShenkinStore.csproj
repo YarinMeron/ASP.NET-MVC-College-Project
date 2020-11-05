@@ -12,9 +12,28 @@
   <ItemGroup>
     <None Include="wwwroot\Photos\12B.jpeg" />
     <None Include="wwwroot\Photos\53C.jpeg" />
+    <None Include="wwwroot\Scripts\bootstrap.js" />
+    <None Include="wwwroot\Scripts\bootstrap.min.js" />
+    <None Include="wwwroot\Scripts\global2.js" />
+    <None Include="wwwroot\Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="wwwroot\Scripts\jquery-1.10.2.js" />
+    <None Include="wwwroot\Scripts\jquery-1.10.2.min.js" />
+    <None Include="wwwroot\Scripts\jquery-1.10.2.min.map" />
+    <None Include="wwwroot\Scripts\jquery-2.2.4.min.js" />
+    <None Include="wwwroot\Scripts\jquery-3.5.1.min.js" />
+    <None Include="wwwroot\Scripts\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.min.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\Scripts\modernizr-2.6.2.js" />
+    <None Include="wwwroot\Scripts\respond.js" />
+    <None Include="wwwroot\Scripts\respond.min.js" />
+    <None Include="wwwroot\Scripts\_references.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />

@@ -85,6 +85,10 @@
             "System.Collections": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.5.1, )"
             }
           },
           "imports": [
@@ -105,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

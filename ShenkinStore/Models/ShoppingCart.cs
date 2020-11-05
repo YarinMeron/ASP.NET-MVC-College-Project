@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+
 namespace ShenkinStore.Models
 {
     public class ShoppingCart
@@ -14,6 +16,10 @@ namespace ShenkinStore.Models
         public string ShoppingCartId { get; set; }
 
         public const String CartSessionKey = "cartId";
+
+       public static Dictionary<int, int> productsAmount = new Dictionary<int, int>();
+        public static Dictionary<int, Product> idToProduct = new Dictionary<int, Product>();
+        public static Dictionary<int, decimal> idToTotalSum = new Dictionary<int, decimal>();
   
         // Funcs
         // GetCart will return an object of shopping cart with the userId as ShoppingCartId
@@ -25,39 +31,46 @@ namespace ShenkinStore.Models
             cart.ShoppingCartId = UserId.ToString();
             return cart;
         }
-        public int AddToCart(Product product)
+
+        public Dictionary<int, decimal> GetProductTotal()
+        {
+            return idToTotalSum;
+        }
+
+        public Dictionary<int, int> GetAmount()
+        {
+            return productsAmount;
+        }
+
+        public void AddToCart(Product product,int amount)
         {
 
-         if (product.sold == false && product.inCart == false)
-             
+            if (!idToProduct.ContainsKey(product.ProductId))
             {
-                var addedProduct = db.Products.Single(p => product.ProductId == p.ProductId);
-               addedProduct.CartId = ShoppingCartId;
-             addedProduct.inCart = true;
-                addedProduct.Quantity--;
-                db.SaveChanges();
-                return 0;
+                idToProduct.Add(product.ProductId, product);
+            }
+
+    
+           if (!productsAmount.ContainsKey(product.ProductId))
+            {
+                productsAmount.Add(product.ProductId, amount);
+                idToTotalSum.Add(product.ProductId, product.Price * amount);
+                
             }
             else
             {
-                return -1;
+                productsAmount[product.ProductId] = amount;
+                idToTotalSum[product.ProductId] = product.Price*amount;
             }
 
         }
 
-        public int RemoveFromCart(Product product)
+        public void RemoveFromCart(Product product)
         {
-            if (product.inCart == true)
-            {
-                var addedProduct = db.Products.Single(p => product.ProductId == p.ProductId);
-                addedProduct.CartId = null;
-                addedProduct.inCart = false;
-                addedProduct.Quantity++;
-                db.SaveChanges();
-                return 0;
-            }
-            else
-                return -1;
+
+            idToProduct.Remove(product.ProductId);
+            idToTotalSum.Remove(product.ProductId);
+    
 
         }
         public void emptyCart()
@@ -73,39 +86,23 @@ namespace ShenkinStore.Models
 
         public List<Product> GetCartItems()
         {
-              return db.Products.Where(Product => Product.CartId == ShoppingCartId).ToList();
-            
-        }
+          return  idToProduct.Values.ToList();
+       }
     public int getCount()
         {
-            int? count = (
-                from product in db.Products
-                where product.CartId == ShoppingCartId
-                select product
-                ).Count();
 
-            // ?? - this operator is called the null-coalescing operator. It returns the left-hand operand if the operand is not null; otherwise it returns the right hand operand.
-            return count ?? -1;
+            return this.GetCartItems().Count();
+           
         }
 
         public decimal GetTotal()
         {
-        
-            IEnumerable<decimal> list =
-    from product in db.Products
-    where product.CartId==ShoppingCartId
-    orderby product descending
-    select product.Price;
-            if (list != null)
-            {
-                decimal sum = list.Sum();
-                // return list.Sum();
-                return sum;
-            }
-            else
-            {
-                return 0;
-            }
+
+            decimal total = 0;
+           
+            total = idToTotalSum.Values.Sum();
+          
+            return total;
         }
        
 
@@ -130,6 +127,25 @@ namespace ShenkinStore.Models
             }
             return context.Session.GetString("CartSessionKey");//maybe "tostring" is not nesscury
         }
+
+
+
+        public void IncreaseAmount(int id)
+        {
+            productsAmount[id]++;
+            decimal newPrice = idToProduct[id].Price;
+            idToTotalSum[id] += newPrice;
+        }
+        public void DecreaseAmount(int id)
+        {
+            productsAmount[id]--;
+            decimal newPrice = idToProduct[id].Price;
+            if (idToTotalSum[id] > 0)
+            {
+                idToTotalSum[id] -= newPrice;
+            }
+        }
+
 
         //Will auto create Transaction when you proceed to Payment
         public Transaction CreateTransaction(ShoppingCart shoppingcart)

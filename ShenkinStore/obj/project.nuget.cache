@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7AZEXeNsx4l0ZVxNk6hKAU5WcCCo3W1lWdA/J6NBNpSff85YGZRZuS/p8VAdAwXqDZUxXV0stMTE4sgbz5izYA==",
+  "dgSpecHash": "oyq8gM6/+Jyku4tkbYImWwRz9nZrxgm8ZkW842fGXL1fSygtKibiCnqisTT19cFRK1RuSQyQlSomvKPihS+kQg==",
   "success": true,
   "projectFilePath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\eliordayari\\.nuget\\packages\\jquery\\3.5.1\\jquery.3.5.1.nupkg.sha512",
     "C:\\Users\\eliordayari\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "C:\\Users\\eliordayari\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
     "C:\\Users\\eliordayari\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.2.0\\microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512",

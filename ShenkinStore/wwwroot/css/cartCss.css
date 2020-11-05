@@ -118,12 +118,18 @@ a.remove:hover {
     text-align: center;
 }
 
-.th {
+th, td{
     background: #f34d35;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.5em;
+}
+.tuck{
+    width:90%;
+}
+.big{
+    column-width:150px;
 }
 .fonts {
 	 font: bold 2em arial;
@@ -154,6 +160,14 @@ a.fonts:hover{
 
 .col-pro {
     width: 44%;
+}
+.newcol {
+    width: 30%;
+    background: #f34d35;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
     .col-pro > * {
