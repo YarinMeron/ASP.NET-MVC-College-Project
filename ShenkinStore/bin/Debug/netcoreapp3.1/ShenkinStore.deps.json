@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "ShenkinStore/1.0.0": {
         "dependencies": {
+          "Facebook": "7.0.6",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.8",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
@@ -309,6 +310,17 @@
         "dependencies": {
           "jQuery": "3.0.0",
           "popper.js": "1.16.1"
+        }
+      },
+      "Facebook/7.0.6": {
+        "runtime": {
+          "lib/net45/Facebook.dll": {
+            "assemblyVersion": "6.0.10.0",
+            "fileVersion": "7.0.6.0"
+          }
+        },
+        "compile": {
+          "lib/net45/Facebook.dll": {}
         }
       },
       "jQuery/3.0.0": {},
@@ -4210,6 +4222,13 @@
       "sha512": "sha512-aO6V1YQtUqSBm+ClDdS5MkQoY6FtNjRvm2wBUesc4COvCFW9wZUE3OoHbJeuhNNOQxokMQALFHcQNJUNH9YoWw==",
       "path": "bootstrap/4.5.2",
       "hashPath": "bootstrap.4.5.2.nupkg.sha512"
+    },
+    "Facebook/7.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D9nlWZb88S4U+eh1pUDQ+AkSkiht6m0eFpxKFddZnQSSFTnncvDMBEnNODy4fOIOjWQIiOXRVbuY04jCPyWqkw==",
+      "path": "facebook/7.0.6",
+      "hashPath": "facebook.7.0.6.nupkg.sha512"
     },
     "jQuery/3.0.0": {
       "type": "package",
