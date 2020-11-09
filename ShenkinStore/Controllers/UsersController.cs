@@ -225,7 +225,14 @@ namespace ShenkinStore.Controllers
             HttpContext.Session.Remove("UserType");
             return RedirectToAction("Index", "Home");
         }
-
+        public async Task<IActionResult> Displaygraphs()
+        {
+            var users = _context.User.ToList();
+            var trans = _context.Transaction.ToList();
+            ViewBag.Users = users;
+            ViewBag.Transaction = trans;
+            return View();
+        }
 
     }
 }
