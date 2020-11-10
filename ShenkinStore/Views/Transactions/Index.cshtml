@@ -4,6 +4,8 @@
 
 
 
+
+
 <h2>Index</h2>
 
 <p>
@@ -13,7 +15,6 @@
 <div class="text-left col-12 form-zone">
     <div class="row" style="margin:10px; padding-right:10px">
         <form asp-controller="Transactions" asp-action="Index">
-            
         </form>
     </div>
 </div>
@@ -55,7 +56,8 @@
         @Html.ActionLink("Details", "Details", new { id = item.TransactionId }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.TransactionId })
     </td>
-</tr>}
+</tr>
+}
 
 </table>
 

@@ -20,7 +20,7 @@ namespace ShenkinStore.Controllers
 
         public ActionResult Index()
         {
-  
+
             var userID = HttpContext.Session.GetString("UserID");
             if (userID != null)
             {
@@ -40,23 +40,23 @@ namespace ShenkinStore.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-      
+
 
         // GET: ShoppingCart/AddToCart/id
-        public ActionResult AddToCart(int id,int amount)
+        public ActionResult AddToCart(int id, int amount)
         {
             var userID = HttpContext.Session.GetString("UserID");
             if (userID != null)
             {
                 var addedProduct = db.Products.Single(product => product.ProductId == id);
                 var cart = ShoppingCart.GetCart(userID.ToString());
-                
 
-                cart.AddToCart(addedProduct,amount);
-                
-                
 
-                
+                cart.AddToCart(addedProduct, amount);
+
+
+
+
 
                 return RedirectToAction("Index", "ShoppingCart");
             }
@@ -70,14 +70,14 @@ namespace ShenkinStore.Controllers
         public ActionResult IncreaseProduct(int id)
         {
             var userID = HttpContext.Session.GetString("UserID");
-           
-                var cart = ShoppingCart.GetCart(userID.ToString());
-                cart.IncreaseAmount(id);
-            return RedirectToAction("Index","ShoppingCart");
-                
-            
-           
-            }
+
+            var cart = ShoppingCart.GetCart(userID.ToString());
+            cart.IncreaseAmount(id);
+            return RedirectToAction("Index", "ShoppingCart");
+
+
+
+        }
         public ActionResult DecreaseProduct(int id)
         {
             var userID = HttpContext.Session.GetString("UserID");
@@ -97,7 +97,7 @@ namespace ShenkinStore.Controllers
             {
                 var cart = ShoppingCart.GetCart(userID.ToString());
                 Product product = db.Products.FirstOrDefault(item => item.ProductId == id);
-                
+
                 cart.RemoveFromCart(product);
                 return RedirectToAction("Index", "ShoppingCart");
             }
@@ -115,7 +115,7 @@ namespace ShenkinStore.Controllers
             {
 
                 var cart = ShoppingCart.GetCart(userID.ToString());
-                var cartItems = db.Products.Where(product => product.CartId == cart.ShoppingCartId);
+                var cartItems = cart.GetCartItems();
                 foreach (var cartItem in cartItems)
                 {
 
@@ -160,7 +160,7 @@ namespace ShenkinStore.Controllers
         }
 
 
-        
+
 
         //Kind of Grabge Collector, unmanneged
         //credit to:  https://stackoverflow.com/questions/10134406/why-is-there-need-for-an-explicit-dispose-method-in-asp-net-mvc-controllers-c

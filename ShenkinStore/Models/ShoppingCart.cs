@@ -156,6 +156,7 @@ namespace ShenkinStore.Models
             transaction.Paid = false;
             transaction.TransDate = DateTime.Now;
              transaction.Amount = shoppingcart.GetTotal();
+            transaction.productslist = shoppingcart.GetCartItems();
            
             return transaction;
         }

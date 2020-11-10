@@ -26,5 +26,7 @@ namespace ShenkinStore.Models
         public virtual User User { get; set; }
 
         public virtual ShoppingCart Cart { get; set; }
+
+        public ICollection<Product> productslist { get; set; }
     }
 }

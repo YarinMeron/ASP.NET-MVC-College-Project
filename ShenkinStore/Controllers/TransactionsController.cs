@@ -26,7 +26,7 @@ namespace ShenkinStore.Controllers
             return View(await db.Transactions.ToListAsync());
         }
 
-       
+
 
 
 
@@ -38,8 +38,9 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await db.Transactions
+            var transaction = await db.Transactions.Include(p => p.productslist)
                 .FirstOrDefaultAsync(m => m.TransactionId == id);
+
             if (transaction == null)
             {
                 return NotFound();
@@ -211,6 +212,7 @@ namespace ShenkinStore.Controllers
                             CartItems = db.Products.Where(product => product.CartId == user.UserId.ToString()).ToList(),
                             amount = transaction.Amount
                         };
+                       
                     
                 
                         //return View(transactionView);    // We can redirect to wherever we want..

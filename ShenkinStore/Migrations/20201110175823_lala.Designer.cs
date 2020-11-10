@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShenkinStore.Models;
 
 namespace ShenkinStore.Migrations
 {
     [DbContext(typeof(ShenkinContext))]
-    partial class ShenkinContextModelSnapshot : ModelSnapshot
+    [Migration("20201110175823_lala")]
+    partial class lala
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace ShenkinStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CartId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Colorr")
                         .HasColumnType("int");
@@ -51,14 +50,8 @@ namespace ShenkinStore.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransactionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("gender")
                         .HasColumnType("int");
-
-                    b.Property<bool>("inCart")
-                        .HasColumnType("bit");
 
                     b.Property<int>("productBrand")
                         .HasColumnType("int");
@@ -66,24 +59,9 @@ namespace ShenkinStore.Migrations
                     b.Property<int>("productType")
                         .HasColumnType("int");
 
-                    b.Property<bool>("sold")
-                        .HasColumnType("bit");
-
                     b.HasKey("ProductId");
 
-                    b.HasIndex("TransactionId");
-
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ShenkinStore.Models.ShoppingCart", b =>
-                {
-                    b.Property<string>("ShoppingCartId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ShoppingCartId");
-
-                    b.ToTable("ShoppingCart");
                 });
 
             modelBuilder.Entity("ShenkinStore.Models.Transaction", b =>
@@ -93,31 +71,22 @@ namespace ShenkinStore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CartShoppingCartId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("Delivery")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Paid")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("TransDate")
+                    b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("TransactionId");
 
-                    b.HasIndex("CartShoppingCartId");
+                    b.HasIndex("ProductID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserID");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transaction");
                 });
 
             modelBuilder.Entity("ShenkinStore.Models.User", b =>
@@ -151,25 +120,22 @@ namespace ShenkinStore.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ShenkinStore.Models.Product", b =>
-                {
-                    b.HasOne("ShenkinStore.Models.Transaction", null)
-                        .WithMany("productslist")
-                        .HasForeignKey("TransactionId");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("ShenkinStore.Models.Transaction", b =>
                 {
-                    b.HasOne("ShenkinStore.Models.ShoppingCart", "Cart")
+                    b.HasOne("ShenkinStore.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("CartShoppingCartId");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ShenkinStore.Models.User", "User")
                         .WithMany("Transactions")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

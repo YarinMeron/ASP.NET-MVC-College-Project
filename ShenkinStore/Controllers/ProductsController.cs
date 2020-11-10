@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using Facebook;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -68,6 +70,7 @@ namespace ShenkinStore.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                postProductOnFacebookPage(product.ProductName, product.Price, product.ImageUrl); // checking out git cmds
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -158,6 +161,23 @@ namespace ShenkinStore.Controllers
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.ProductId == id);
+        }
+
+        public void postProductOnFacebookPage(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
+        {
+            dynamic messagePost = new ExpandoObject();
+            messagePost.message = "New product is in the shop !";
+
+            string acccessToken = "EAAFjnLLJDO0BAA3cpMU0Fko2Y6tJAf8LLZCWUsfZAoJ7D0MHfCoveQT3rTJBoljjqezgUpcOLKjHUy4MZAeZBsbEOsWvFwM351TLHlFNFIHyp6PMf3jh3ZAFgWu9wv88tZCSGn1ZC1GL75VHVZCnKV0aWhlNuiPwK9A87kkxFGWZC6QZDZD";
+            FacebookClient appp = new FacebookClient(acccessToken); try
+            {
+                var postId = appp.Post("120440503196052" + "/feed", messagePost);
+            }
+            catch (FacebookOAuthException ex)
+            {
+                System.Console.WriteLine("FacebookOAuthException - postId is null");
+            }
+
         }
 
 
