@@ -1,4 +1,19 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿//-----------------------------------------------------Fitting the video to the Client Screen Side----------------
 
-// Write your JavaScript code.
+var $video = $('video'),
+    $window = $(window);
+
+$(document).ready(function () {
+    var height = $window.height();
+    $video.css('height', height);
+
+    var videoWidth = $video.width(),
+        windowWidth = $window.width(),
+        marginLeftAdjust = (windowWidth - videoWidth) / 2;
+    $video.css({
+        'height': height,
+        'marginLeft': marginLeftAdjust
+    });
+}).resize();
+
+//-----------------------------------------------------------------------------------------------------------------------------------------

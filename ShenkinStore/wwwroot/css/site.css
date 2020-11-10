@@ -1,6 +1,16 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+body {
+    background: #ece3e3;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+  /*  margin-bottom: 60px;*/
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -59,13 +69,70 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  
 }
-.footer {
-  position: absolute;
-  bottom: 0;
+ 
+footer {
+  position: sticky;
   width: 100%;
+  bottom:0px;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+/* resets */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Grid layout */
+/*.grid {
+    display: grid;
+    grid-auto-columns: 1fr 200px;
+}
+
+.content {
+    grid-column: 1;
+}
+
+.sidebar {
+    grid-column: 2;
+    margin: 5px;
+    padding: 5px;
+}
+
+.grid > * {
+    border: 0px;*/ /* demo only */
+/*}*/
+
+
+#Product_side {
+    width: 100px;
+    height: 100px;
+    background: #BBB;
+    transition: width 3s;
+}
+
+    #Product_side:hover {
+        width: 200px;
+    }
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"), url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+}
+
+#videof, .videot {
+    width: 100% !important;
+    height: 100% !important;
 }
