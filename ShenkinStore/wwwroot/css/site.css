@@ -73,7 +73,8 @@ body {
 }
  
 footer {
-  position: sticky;
+  position: absolute;
+  padding:20px;
   width: 100%;
   bottom:0px;
   white-space: nowrap;

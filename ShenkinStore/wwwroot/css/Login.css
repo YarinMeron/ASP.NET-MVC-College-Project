@@ -1,7 +1,5 @@
 ﻿body {
-  
     background-image: url('../Photos/4ea1cdc6e9544afc5101ab0de8a8d15a.jpg');
-    
 }
 
 .box {
@@ -15,6 +13,7 @@
     text-align: center;
     color: antiquewhite;
     font-size: large;
+    border-radius: 20px;
 }
 
     .box h1 {

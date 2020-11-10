@@ -180,5 +180,21 @@ namespace ShenkinStore.Controllers
             }
 
         }
+        //public ActionResult Search(string ProductName)
+        //{
+        //    Product curr = _context.Products.FirstOrDefault(product => product.ProductName == ProductName);
+        //    return curr == null ? RedirectToAction("Index") : RedirectToAction("Details", new { id = curr.ProductId });
+        //}
+
+        public async Task<IActionResult> Search(string productName)
+        {
+            var query = from p in _context.Products
+                        where p.ProductName.Contains(productName)
+                        select p;
+
+            return PartialView(await query.ToListAsync());
+
+
+        }
     } 
 }
