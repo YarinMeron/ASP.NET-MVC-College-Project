@@ -197,7 +197,7 @@ namespace ShenkinStore.Controllers
 
         }
 
-        public async Task<IActionResult> aSearch(Gender gender , ProductType product_type, Color color)
+        public async Task<IActionResult> aSearch(string gender  , string product_type, string color)
         {
             //if (color.ToString() == null && gender.ToString() == null && product_type.ToString() == null)
             //    return PartialView(await products.ToListAsync());
@@ -205,15 +205,15 @@ namespace ShenkinStore.Controllers
             var products = from p in _context.Products
                         select p;
 
-            if(color.ToString() != null)
-            products = products.Where(p => p.Colorr == color);
-            Console.Write(products);
+            if(color != null)
+            products = products.Where(p => p.Colorr == (Models.Color)Enum.Parse(typeof(Models.Color),color,true) );
+          
 
-            if (gender.ToString() != null)
-            products = products.Where(p => p.gender == gender);
+            if (gender != null)
+            products = products.Where(p => p.gender == (Models.Gender)Enum.Parse(typeof(Models.Gender), gender, true));
 
-            if (product_type.ToString() != null)
-            products = products.Where(p => p.productType == product_type);
+            if (product_type != null)
+            products = products.Where(p => p.productType == (Models.ProductType)Enum.Parse(typeof(Models.ProductType), product_type, true));
 
 
             return PartialView(await products.ToListAsync());
