@@ -54,8 +54,8 @@
                 <tr>
                     <th>Transaction Id</th>
                     <th>Transaction Date</th>
-                    <th>Product</th>
-                    <th>Price</th>
+                    <th>Paid</th>
+                    <th>Total Price</th>
                 </tr>
                 @foreach (var item in Model.Transactions)
                 {
@@ -64,13 +64,13 @@
                             @Html.DisplayFor(modelItem => item.TransactionId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TransactionDate)
+                            @Html.DisplayFor(modelItem => item.TransDate)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                            @Html.DisplayFor(modelItem => item.Paid)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Product.Price)
+                            @Html.DisplayFor(modelItem => item.Amount)
                         </td>
                     </tr>
                 }

@@ -2,6 +2,59 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Accord/3.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Accord.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {}
+        },
+        "build": {
+          "build/Accord.targets": {}
+        }
+      },
+      "Accord.MachineLearning/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Accord": "3.8.0",
+          "Accord.Math": "3.8.0",
+          "Accord.Statistics": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Accord.MachineLearning.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.MachineLearning.dll": {}
+        }
+      },
+      "Accord.Math/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Accord": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {},
+          "lib/netstandard2.0/Accord.Math.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {},
+          "lib/netstandard2.0/Accord.Math.dll": {}
+        }
+      },
+      "Accord.Statistics/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Accord": "3.8.0",
+          "Accord.Math": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Accord.Statistics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Statistics.dll": {}
+        }
+      },
       "bootstrap/4.5.2": {
         "type": "package",
         "dependencies": {
@@ -120,7 +173,7 @@
           "lib/net45/Facebook.dll": {}
         }
       },
-      "jQuery/3.0.0": {
+      "jQuery/3.5.1": {
         "type": "package"
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.8": {
@@ -3209,6 +3262,162 @@
     }
   },
   "libraries": {
+    "Accord/3.8.0": {
+      "sha512": "7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
+      "type": "package",
+      "path": "accord/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "accord.3.8.0.nupkg.sha512",
+        "accord.nuspec",
+        "build/Accord.dll.config",
+        "build/Accord.targets",
+        "lib/net35-unity full v3.5/Accord.dll",
+        "lib/net35-unity full v3.5/Accord.xml",
+        "lib/net35-unity micro v3.5/Accord.dll",
+        "lib/net35-unity micro v3.5/Accord.xml",
+        "lib/net35-unity subset v3.5/Accord.dll",
+        "lib/net35-unity subset v3.5/Accord.xml",
+        "lib/net35-unity web v3.5/Accord.dll",
+        "lib/net35-unity web v3.5/Accord.xml",
+        "lib/net35/Accord.dll",
+        "lib/net35/Accord.xml",
+        "lib/net40/Accord.dll",
+        "lib/net40/Accord.xml",
+        "lib/net45/Accord.dll",
+        "lib/net45/Accord.xml",
+        "lib/net46/Accord.dll",
+        "lib/net46/Accord.xml",
+        "lib/net462/Accord.dll",
+        "lib/net462/Accord.xml",
+        "lib/netstandard1.4/Accord.dll",
+        "lib/netstandard1.4/Accord.xml",
+        "lib/netstandard2.0/Accord.dll",
+        "lib/netstandard2.0/Accord.xml"
+      ]
+    },
+    "Accord.MachineLearning/3.8.0": {
+      "sha512": "6d8HY6/S4t5LBgD4YWrHISDX4q9s/caBu4fbHhq5RH2U4ETbtnDcvwgtsqGHKH1FyPylWFOniYjLO4B4xkEEuw==",
+      "type": "package",
+      "path": "accord.machinelearning/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "accord.machinelearning.3.8.0.nupkg.sha512",
+        "accord.machinelearning.nuspec",
+        "lib/net35-unity full v3.5/Accord.MachineLearning.dll",
+        "lib/net35-unity full v3.5/Accord.MachineLearning.xml",
+        "lib/net35-unity micro v3.5/Accord.MachineLearning.dll",
+        "lib/net35-unity micro v3.5/Accord.MachineLearning.xml",
+        "lib/net35-unity subset v3.5/Accord.MachineLearning.dll",
+        "lib/net35-unity subset v3.5/Accord.MachineLearning.xml",
+        "lib/net35-unity web v3.5/Accord.MachineLearning.dll",
+        "lib/net35-unity web v3.5/Accord.MachineLearning.xml",
+        "lib/net35/Accord.MachineLearning.dll",
+        "lib/net35/Accord.MachineLearning.xml",
+        "lib/net40/Accord.MachineLearning.dll",
+        "lib/net40/Accord.MachineLearning.xml",
+        "lib/net45/Accord.MachineLearning.dll",
+        "lib/net45/Accord.MachineLearning.xml",
+        "lib/net46/Accord.MachineLearning.dll",
+        "lib/net46/Accord.MachineLearning.xml",
+        "lib/net462/Accord.MachineLearning.dll",
+        "lib/net462/Accord.MachineLearning.xml",
+        "lib/netstandard1.4/Accord.MachineLearning.dll",
+        "lib/netstandard1.4/Accord.MachineLearning.xml",
+        "lib/netstandard2.0/Accord.MachineLearning.dll",
+        "lib/netstandard2.0/Accord.MachineLearning.xml"
+      ]
+    },
+    "Accord.Math/3.8.0": {
+      "sha512": "K3dzeQjDIrwRnoTRoMOoIbul2Uc0B8cnEtdrSlirmIo37C+jVkmYpJzme/z4Kg99XR2Vj5W5TTNlhjn+AKR+8A==",
+      "type": "package",
+      "path": "accord.math/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "accord.math.3.8.0.nupkg.sha512",
+        "accord.math.nuspec",
+        "lib/net35-unity full v3.5/Accord.Math.Core.dll",
+        "lib/net35-unity full v3.5/Accord.Math.Core.xml",
+        "lib/net35-unity full v3.5/Accord.Math.dll",
+        "lib/net35-unity full v3.5/Accord.Math.xml",
+        "lib/net35-unity micro v3.5/Accord.Math.Core.dll",
+        "lib/net35-unity micro v3.5/Accord.Math.Core.xml",
+        "lib/net35-unity micro v3.5/Accord.Math.dll",
+        "lib/net35-unity micro v3.5/Accord.Math.xml",
+        "lib/net35-unity subset v3.5/Accord.Math.Core.dll",
+        "lib/net35-unity subset v3.5/Accord.Math.Core.xml",
+        "lib/net35-unity subset v3.5/Accord.Math.dll",
+        "lib/net35-unity subset v3.5/Accord.Math.xml",
+        "lib/net35-unity web v3.5/Accord.Math.Core.dll",
+        "lib/net35-unity web v3.5/Accord.Math.Core.xml",
+        "lib/net35-unity web v3.5/Accord.Math.dll",
+        "lib/net35-unity web v3.5/Accord.Math.xml",
+        "lib/net35/Accord.Math.Core.dll",
+        "lib/net35/Accord.Math.Core.xml",
+        "lib/net35/Accord.Math.dll",
+        "lib/net35/Accord.Math.xml",
+        "lib/net40/Accord.Math.Core.dll",
+        "lib/net40/Accord.Math.Core.xml",
+        "lib/net40/Accord.Math.dll",
+        "lib/net40/Accord.Math.xml",
+        "lib/net45/Accord.Math.Core.dll",
+        "lib/net45/Accord.Math.Core.xml",
+        "lib/net45/Accord.Math.dll",
+        "lib/net45/Accord.Math.xml",
+        "lib/net46/Accord.Math.Core.dll",
+        "lib/net46/Accord.Math.Core.xml",
+        "lib/net46/Accord.Math.dll",
+        "lib/net46/Accord.Math.xml",
+        "lib/net462/Accord.Math.Core.dll",
+        "lib/net462/Accord.Math.Core.xml",
+        "lib/net462/Accord.Math.dll",
+        "lib/net462/Accord.Math.xml",
+        "lib/netstandard1.4/Accord.Math.Core.dll",
+        "lib/netstandard1.4/Accord.Math.Core.xml",
+        "lib/netstandard1.4/Accord.Math.dll",
+        "lib/netstandard1.4/Accord.Math.xml",
+        "lib/netstandard2.0/Accord.Math.Core.dll",
+        "lib/netstandard2.0/Accord.Math.Core.xml",
+        "lib/netstandard2.0/Accord.Math.dll",
+        "lib/netstandard2.0/Accord.Math.xml"
+      ]
+    },
+    "Accord.Statistics/3.8.0": {
+      "sha512": "8WsmCE31Qdy3FmRvwtAY3F9/fJEi/6uyLQrhOvSI6pP6gpoaacmCrJRIphkGf2EB8gKHRWLAc4UXr1OOPHxkmQ==",
+      "type": "package",
+      "path": "accord.statistics/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "accord.statistics.3.8.0.nupkg.sha512",
+        "accord.statistics.nuspec",
+        "lib/net35-unity full v3.5/Accord.Statistics.dll",
+        "lib/net35-unity full v3.5/Accord.Statistics.xml",
+        "lib/net35-unity micro v3.5/Accord.Statistics.dll",
+        "lib/net35-unity micro v3.5/Accord.Statistics.xml",
+        "lib/net35-unity subset v3.5/Accord.Statistics.dll",
+        "lib/net35-unity subset v3.5/Accord.Statistics.xml",
+        "lib/net35-unity web v3.5/Accord.Statistics.dll",
+        "lib/net35-unity web v3.5/Accord.Statistics.xml",
+        "lib/net35/Accord.Statistics.dll",
+        "lib/net35/Accord.Statistics.xml",
+        "lib/net40/Accord.Statistics.dll",
+        "lib/net40/Accord.Statistics.xml",
+        "lib/net45/Accord.Statistics.dll",
+        "lib/net45/Accord.Statistics.xml",
+        "lib/net46/Accord.Statistics.dll",
+        "lib/net46/Accord.Statistics.xml",
+        "lib/net462/Accord.Statistics.dll",
+        "lib/net462/Accord.Statistics.xml",
+        "lib/netstandard1.4/Accord.Statistics.dll",
+        "lib/netstandard1.4/Accord.Statistics.xml",
+        "lib/netstandard2.0/Accord.Statistics.dll",
+        "lib/netstandard2.0/Accord.Statistics.xml"
+      ]
+    },
     "bootstrap/4.5.2": {
       "sha512": "aO6V1YQtUqSBm+ClDdS5MkQoY6FtNjRvm2wBUesc4COvCFW9wZUE3OoHbJeuhNNOQxokMQALFHcQNJUNH9YoWw==",
       "type": "package",
@@ -3294,26 +3503,26 @@
         "serializers/JsonNetSerializer.cs"
       ]
     },
-    "jQuery/3.0.0": {
-      "sha512": "xFfntV19HzCtKdJWOp/XT9PUY3SslokTDDLFJZdBug36j1XVhw1+vPQ/n7Gd5y+jdpesn5B1m1yn1qIUq57jlA==",
+    "jQuery/3.5.1": {
+      "sha512": "ji6sm/AI0vjASXAA/AG9Yf5ypALAqIDXFFKPHMAnFL8kp3xqULIWhACjg/OXZP88C56frYlIej2nrdBnhTMYQQ==",
       "type": "package",
-      "path": "jquery/3.0.0",
+      "path": "jquery/3.5.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Content/Scripts/jquery-3.0.0-vsdoc.js",
-        "Content/Scripts/jquery-3.0.0.js",
-        "Content/Scripts/jquery-3.0.0.min.js",
-        "Content/Scripts/jquery-3.0.0.min.map",
-        "Content/Scripts/jquery-3.0.0.slim.js",
-        "Content/Scripts/jquery-3.0.0.slim.min.js",
-        "Content/Scripts/jquery-3.0.0.slim.min.map",
+        "Content/Scripts/jquery-3.5.1-vsdoc.js",
+        "Content/Scripts/jquery-3.5.1.js",
+        "Content/Scripts/jquery-3.5.1.min.js",
+        "Content/Scripts/jquery-3.5.1.min.map",
+        "Content/Scripts/jquery-3.5.1.slim.js",
+        "Content/Scripts/jquery-3.5.1.slim.min.js",
+        "Content/Scripts/jquery-3.5.1.slim.min.map",
         "Tools/common.ps1",
         "Tools/install.ps1",
-        "Tools/jquery-3.0.0.intellisense.js",
+        "Tools/jquery-3.5.1.intellisense.js",
         "Tools/uninstall.ps1",
-        "jquery.3.0.0.nupkg.sha512",
+        "jquery.3.5.1.nupkg.sha512",
         "jquery.nuspec"
       ]
     },
@@ -9951,6 +10160,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Accord.MachineLearning >= 3.8.0",
+      "Accord.Math >= 3.8.0",
       "Facebook >= 7.0.6",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.8",
       "Microsoft.AspNetCore.Http >= 2.2.2",
@@ -9962,29 +10173,26 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.8",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "bootstrap >= 4.5.2"
+      "System.Collections >= 4.3.0",
+      "bootstrap >= 4.5.2",
+      "jQuery >= 3.5.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yarinmeron\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\eliordayari\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+      "projectUniqueName": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
       "projectName": "ShenkinStore",
-      "projectPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
-      "packagesPath": "C:\\Users\\yarinmeron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\obj\\",
+      "projectPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+      "packagesPath": "C:\\Users\\eliordayari\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\yarinmeron\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\eliordayari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -10007,6 +10215,14 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Accord.MachineLearning": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
+          "Accord.Math": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
           "Facebook": {
             "target": "Package",
             "version": "[7.0.6, )"
@@ -10051,9 +10267,17 @@
             "target": "Package",
             "version": "[3.1.4, )"
           },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
           "bootstrap": {
             "target": "Package",
             "version": "[4.5.2, )"
+          },
+          "jQuery": {
+            "target": "Package",
+            "version": "[3.5.1, )"
           }
         },
         "imports": [

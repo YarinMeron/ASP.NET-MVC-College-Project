@@ -1,0 +1,131 @@
+﻿@model ShenkinStore.ViewModels.ShoppingCartViewModel
+
+@{ ViewBag.Title = "Store Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<head>
+    <link rel="stylesheet" href="~/css/cartCss.css" />
+</head>
+<div class="containerNew">
+
+    <div class="heading">
+        <h1>
+            <span class="shopper align-center"></span>Your Shopping Cart
+        </h1>
+
+        <a href="https://localhost:44397/Products" class="visibility-cart transition is-open">X</a>
+    </div>
+
+
+
+    @if (Model.CartItems.Count == 0)
+    {
+        <a class="btn btn-danger text-right middle-block" href='@Url.Action("Index", "Products")'>Your Cart is empty continue buy</a> }
+    else
+    {
+        <table class="table align-center">
+            <tr class="align-center">
+                <th class="th">
+                    Product Name
+                </th>
+
+                <th class="th">
+                    Price
+                </th>
+                <th class="th tuck ">
+                    Amount
+                </th>
+
+                <th class="th">
+                    Photo
+                </th>
+
+                <th class="th">
+                    Total per amounts
+                </th>
+
+
+            </tr>
+
+            @foreach (var item in Model.CartItems)
+            {
+                
+        <tr id="row-@item.ProductId">
+            <td class=" fonts">
+                @*@Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, null)*@
+                <a class="fonts links" href='@Url.Action( "Details", "Products", new { id = item.ProductId }, null)'>@item.ProductName</a>
+            </td>
+            <td class=" fonts">
+                @item.Price ₪
+            </td>
+            <td   >
+
+         
+
+                <div class="col col-qty tuck layout-inline align-center" >
+                    <section c width="100px">
+
+                        <a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
+
+                        <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1" class="align-center" />
+
+                        <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
+                    </section>
+                </div>
+
+            </td>
+
+
+            <td class=" fonts links">
+                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+            </td>
+           
+            <td class="fonts">
+
+
+                @Model.TotalPricePerProduct[item.ProductId]
+
+            </td>
+
+
+
+            <td class=" fonts text-right">
+
+       
+                <a href='@Url.Action("removefromcart", "ShoppingCart", new { id = item.ProductId }, null)' class="remove">x</a>
+            </td>
+
+
+        </tr>
+                }
+            
+            <tr class="text-right">
+                <td class="fonts">
+                    Total:
+                </td>
+                <td></td>
+                <td id="cart-total" class="text-right">
+                    <b>@Model.CartTotal.ToString() ₪</b>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <a class="btn " href='@Url.Action("Index", "Home")'>Continue Buy</a>
+                </td>
+                <td>
+                    <a class="btn " href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
+                </td>
+                <td>          </td>
+
+            </tr>
+
+
+
+        </table>
+        <a class="btn-red" href='@Url.Action("emptyCart", "ShoppingCart")'> Empty Cart</a>
+    }
+
+
+
+

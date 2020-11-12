@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShenkinStore.Models;
-
+using static ShenkinStore.Models.Product;
 
 namespace ShenkinStore.Controllers
 {
@@ -52,7 +52,7 @@ namespace ShenkinStore.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-
+            
 
             return View();
         }
@@ -62,7 +62,7 @@ namespace ShenkinStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,Colorr,productType,productBrand,gender,Description,Quantity,Metrial,ImageUrl")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,sold,inCart,Colorr,productType,productBrand,gender,Description,Quantity,Metrial,ImageUrl,soldAmount")] Product product)
         {
 
 
@@ -80,7 +80,7 @@ namespace ShenkinStore.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
 
-
+            
             if (id == null)
             {
                 return NotFound();
@@ -99,7 +99,7 @@ namespace ShenkinStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Price,Colorr,productType,productBrand,gender,Description,Quantity,Metrial,ImageUrl")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Price,Colorr,productType,productBrand,gender,Description,Quantity,Metrial,ImageUrl,soldAmount")] Product product)
         {
             if (id != product.ProductId)
             {
@@ -163,7 +163,6 @@ namespace ShenkinStore.Controllers
             return _context.Products.Any(e => e.ProductId == id);
         }
 
-     
         public void postProductOnFacebookPage(string ProductName, decimal ProductPrice, string ProductImage)  //after we add aflight we posted in facebool
         {
             dynamic messagePost = new ExpandoObject();
@@ -180,5 +179,7 @@ namespace ShenkinStore.Controllers
             }
 
         }
-    } 
+
+
+    }
 }

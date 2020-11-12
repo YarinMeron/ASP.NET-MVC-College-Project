@@ -1,225 +1,107 @@
-﻿@using Microsoft.AspNetCore.Http
-
-
-@model IEnumerable<ShenkinStore.Models.Product>
-
+﻿@model IEnumerable<ShenkinStore.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-@*
-    @if (Context.Session.GetInt32("UserType") == 1)
-    {
-    <p>
-        {
-        <a asp-action="Create">Create New</a>
-        }
-    </p>
-    }
+<h1>Index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Colorr)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.productType)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.productBrand)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.gender)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Quantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Metrial)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImageUrl)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                if((int)item.productType == 1) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Colorr)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productBrand)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Metrial)
-                </td>
-                <td>
-                    <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
-                </td>
-                <td>
-                    <a href='@Url.Action("BackPacks","Products")'>BackPacks</a>
-                </td>
-
-                @if (Context.Session.GetInt32("UserType") == 1)
-                {
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>|
-                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>|
-                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-                  </td>
-                }
-            </tr>
-            }
-            }
-        </tbody>
-    </table>
-*@
-<div>
-    <video class="videot" id="videot" controls loop >
-        <source src="~/Videos/videoplayback.mp4" type="video/mp4">
-        <object data="~/Videos/videoplayback.mp4" height="1080">
-            <param name="wmode" value="transparent">
-            <param name="autoplay" value="ture">
-            <param name="loop" value="true">
-        </object>
-    </video>
-</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colorr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Metrial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colorr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Metrial)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 1 }, new { @class = "btn btn-info" })
+            </td>
+            <td class="text-center">
+                <div class="form-group">
+                    <label asp-for="@item.Quantity" class="control-label"></label>
+                    <input asp-for="@item.Quantity" class="form-control" />
+                    <span asp-validation-for="@item.Quantity" class="text-danger"></span>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+               
+            </td>
 
 
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
 
-    <link rel="stylesheet" type="text/css" href="~/css/ProductsGrid.css" />
-    @if (Context.Session.GetInt32("UserType") == 1)
-    {
-        <p>
-            {
-            <a asp-action="Create">Create New</a>
-            }
-        </p>
-    }
-    <div class="container">
-        <div class="dropdown" style="margin:40px; padding:30px">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                SortBy
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Price Low To High</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Price High To Low</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Best For You </a></li>
-                <li role="presentation" class="divider"></li>
-            </ul>
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                ProductType
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HandBags</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SideBags</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Wallets</a></li>
-                <li role="presentation" class="divider"></li>
-            </ul>
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                Colors
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">White</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Blue</a></li>
-                <li role="presentation" class="divider"></li>
-            </ul>
-        </div>
-    </div>
-
-
-
-    <div class="shell">
-        <div>
-            <div class="row">
-                @{ int counter = 0;}
-                @foreach (var item in Model)
-                {
-                    if (counter % 4 == 0)
-                    {
-                        <div class="col-md-3">
-                            <div class="wsk-cp-product" style="border-radius:30px">
-                                <div class="wsk-cp-img">
-                                    <img src="@Url.Content(item.ImageUrl)" alt="Product" class="img-responsive" />
-                                </div>
-                                <div class="wsk-cp-text">
-                                    <div class="category">
-                                        <span>Fashion</span>
-                                    </div>
-                                    <div class="title-product">
-                                        <h3>@item.ProductName</h3>
-                                    </div>
-                                    <div class="description-prod">
-                                        <p>@item.Description</p>
-                                    </div>
-                                    @if (Context.Session.GetInt32("UserType") == 1)
-                                    {
-                                        <ul>
-                                            <tr>
-                                                <td>
-                                                    <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>|
-                                                    <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-                                                </td>
-                                            </tr>
-                                        </ul>
-
-                                    }
-                                    <div>
-                                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>|
-                                        <a asp-action="Details" asp-route-id="@item.ProductId">Add To Cart</a>
-                                    </div>
-                                    <div class="wcf-right"><a href=@Url.Action("Details","Products",new { id = @item.ProductId }) class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
-
-                                    @*<div class="card-footer">
-
-                                            <div class="wcf-left"><span class="price">(@item.Price</span></div>
-                                            <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
-                                        </div>*@
-                                </div>
-                            </div>
-                        </div>
-
-                    }
-
-
-                }
-            </div>
-        </div>
-    </div>
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

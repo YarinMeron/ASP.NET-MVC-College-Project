@@ -12,23 +12,29 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TransactionDate)
+            @Html.DisplayNameFor(model => model.Delivery)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TransactionDate)
+            @Html.DisplayFor(model => model.Delivery)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Product)
+            @Html.DisplayNameFor(model => model.Paid)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Product.ProductId)
-        </dd class>
+            @Html.DisplayFor(model => model.Paid)
+        </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
+            @Html.DisplayNameFor(model => model.TransDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.UserId)
-        </dd class>
+            @Html.DisplayFor(model => model.TransDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
     </dl>
     
     <form asp-action="Delete">

@@ -1,0 +1,36 @@
+﻿@model ShenkinStore.ViewModels.KmeansViewModel
+@{
+    ViewData["Title"] = "ProductsLabels";
+}
+
+<h1>ProductsLabels</h1>
+
+<head>
+    <link rel="stylesheet" href="~/css/cartCss.css" />
+</head>
+<div class="containerNew">
+
+    <div class="heading">
+        <h1>
+            <span class="shopper align-center"></span>Your ML
+        </h1>
+
+        <a href="https://localhost:44397/Products" class="visibility-cart transition is-open">X</a>
+    </div>
+
+    <table class="table align-center">
+        <tr class="align-center">
+            <th class="th">
+                Labels
+            </th>
+
+
+
+
+        </tr>
+
+        <td class=" fonts">
+            @Model.labels.ToList()
+        </td>
+
+</div>

@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {}
+    "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {
+    "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+        "projectUniqueName": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
         "projectName": "ShenkinStore",
-        "projectPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
-        "packagesPath": "C:\\Users\\yarinmeron\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\obj\\",
+        "projectPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+        "packagesPath": "C:\\Users\\eliordayari\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yarinmeron\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\eliordayari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -42,6 +38,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Math": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
             "Facebook": {
               "target": "Package",
               "version": "[7.0.6, )"
@@ -86,9 +90,17 @@
               "target": "Package",
               "version": "[3.1.4, )"
             },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "bootstrap": {
               "target": "Package",
               "version": "[4.5.2, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.5.1, )"
             }
           },
           "imports": [

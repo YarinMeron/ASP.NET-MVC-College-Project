@@ -25,7 +25,7 @@ namespace ShenkinStore.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
+            return View(await _context.Users.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -36,8 +36,8 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.Include(t => t.Transactions)
-                .ThenInclude(t => t.Product)
+            var user = await _context.Users.Include(t => t.Transactions)
+                
                 .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
@@ -78,7 +78,7 @@ namespace ShenkinStore.Controllers
 
             }
 
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -130,7 +130,7 @@ namespace ShenkinStore.Controllers
 
             }
 
-            var user = await _context.User
+            var user = await _context.Users
                 .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
@@ -146,8 +146,8 @@ namespace ShenkinStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            var user = await _context.Users.FindAsync(id);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             
             return RedirectToAction(nameof(Index));
@@ -155,7 +155,7 @@ namespace ShenkinStore.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.UserId == id);
+            return _context.Users.Any(e => e.UserId == id);
         }
 
         public ActionResult Register()
@@ -168,7 +168,7 @@ namespace ShenkinStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_context.User.Where(m => m.UserName == aUser.UserName).FirstOrDefault() == null)
+                if (_context.Users.Where(m => m.UserName == aUser.UserName).FirstOrDefault() == null)
                 {
                     User objuser = new User();
                     objuser.CreatedOn = DateTime.Now;
@@ -177,7 +177,7 @@ namespace ShenkinStore.Controllers
                     objuser.Password = aUser.Password;
                     objuser.Phone = aUser.Phone;
                     objuser.userType = 0;
-                    _context.User.Add(objuser);
+                    _context.Users.Add(objuser);
                     _context.SaveChanges();
                     return RedirectToAction("Index", "Home");
                 }
@@ -201,15 +201,16 @@ namespace ShenkinStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_context.User.Where(m => m.UserName == objloginModel.UserName && m.Password == objloginModel.Password).FirstOrDefault() == null)
+                if (_context.Users.Where(m => m.UserName == objloginModel.UserName && m.Password == objloginModel.Password).FirstOrDefault() == null)
                 {
                     ModelState.AddModelError("Error", "User Name and Password are not Matching.");
                     return View();
                 }
                 else
                 {
-                    User un = _context.User.Where(m => m.UserName == objloginModel.UserName).FirstOrDefault();
+                    User un = _context.Users.Where(m => m.UserName == objloginModel.UserName).FirstOrDefault();
                     HttpContext.Session.SetString("UserName", un.UserName.ToString());
+                    HttpContext.Session.SetInt32("UserID", (int)un.UserId);
                     HttpContext.Session.SetInt32("UserType", (int)un.userType);
 
                     return RedirectToAction("Index", "Products");
@@ -223,6 +224,7 @@ namespace ShenkinStore.Controllers
         {
             HttpContext.Session.Remove("UserName");
             HttpContext.Session.Remove("UserType");
+            HttpContext.Session.Remove("UserID");
             return RedirectToAction("Index", "Home");
         }
 

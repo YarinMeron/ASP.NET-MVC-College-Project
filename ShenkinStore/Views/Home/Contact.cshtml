@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<body>
+
+    <h class="Weather">
+        <h3 class="Weather1">
+            Weather in Tel Aviv, IL
+        </h3>
+        <h4>
+            <h id="reply"> </h>°C
+            <img class="weather-widget__img" src="https://openweathermap.org/img/w/01n.png" alt="Weather Tel Aviv , IL" width="50" height="50">
+
+        </h4>
+        <h5>
+            Feels Like :)<br />
+            <h id="feelslike"></h>°C
+        </h5>
+    </h>
+
+
+    <address class="text-right pagetextheb">
+        Shenkin Bags<br />
+        שנקין , תל אביב<br />
+
+        <mail title="דוא" ל">Email: : </mail>
+        ShenkinBags@gmail.com
+    </address>
+
+
+    <script>
+
+        //6340126 zip code of the shop, [32.0809, 34.7806] coords of tel aviv
+        $(document).ready(function () {
+            $.get("https://api.openweathermap.org/data/2.5/weather?lat=32.0809&lon=34.7806&APPID=7888c8e438281215658fd4080f0b834c&units=metric", function (response) {
+
+                $("#reply").text(response.main.temp);
+                $("#feelslike").text(response.main.feels_like);
+            });
+        });
+
+
+
+    </script>
+    <!--Google map-->
+
+    <style>
+        /* Set the size of the div element that contains the map and the other elements */
+        body {
+            background: #c0dffd;
+        }
+
+        #map {
+            height: 400px; /* The height is 400 pixels */
+            width: 50%; /* The width is the width of the web page */
+            background-color: #c0dffd;
+            margin: auto;
+            /* border: 3px solid grey;*/
+            padding: 10px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: .3s;
+        }
+
+            input[type=text]:focus {
+                border-color: dodgerBlue;
+                box-shadow: 0 0 8px 0 dodgerBlue;
+            }
+
+        textarea[name=message] {
+            width: 100%;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: .3s;
+        }
+
+            textarea[name=message]:focus {
+                border-color: dodgerBlue;
+                box-shadow: 0 0 8px 0 dodgerBlue;
+            }
+
+        ul li {
+            list-style: none;
+        }
+    </style>
+    <section>
+
+        <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.019834129723!2d34.77800778444199!3d32.06871228119176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b7e13b0a153%3A0x2d671983627de819!2z16nXmdeg16fXmdefLCDXqtecINeQ15HXmdeRINeZ16TXlQ!5e0!3m2!1siw!2sil!4v1601371016184!5m2!1siw!2sil" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <br />
+        <br />
+    </section>
+
+
+    <section>
+        <!--Leaving a message--   the Email will send to eliordayari@gmail.com via formspree>
+        <!--This is done by using formspree API-->
+        <h3 class="messageforuser text-right">@ViewBag.TheMessage</h3>
+
+
+        <div class="container conmail-area-container">
+
+
+
+
+            <form action="https://formspree.io/mvovgzgr"
+                  method="POST">
+                <ul>
+                    <li>
+                        <label class="custom-field three">
+                            Your email:
+                            <input type="text" placeholder="enter text" name="_replyto">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Your message:
+                            <textarea name="message" placeholder="enter text"></textarea>
+                        </label>
+                    </li>
+                    <li>
+                        <!-- your other form fields go here -->
+
+                        <button type="submit">Send</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </section>
+</body>
