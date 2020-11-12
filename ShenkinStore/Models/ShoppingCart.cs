@@ -20,7 +20,9 @@ namespace ShenkinStore.Models
        public static Dictionary<int, int> productsAmount = new Dictionary<int, int>();
         public static Dictionary<int, Product> idToProduct = new Dictionary<int, Product>();
         public static Dictionary<int, decimal> idToTotalSum = new Dictionary<int, decimal>();
-  
+    //    public static Dictionary<int,Dictionary<Product,int>> dicCart =new Dictionary<int, Dictionary<Product, int>>();
+
+
         // Funcs
         // GetCart will return an object of shopping cart with the userId as ShoppingCartId
         //with "attechment"
@@ -50,6 +52,8 @@ namespace ShenkinStore.Models
                 idToProduct.Add(product.ProductId, product);
             }
 
+
+     
     
            if (!productsAmount.ContainsKey(product.ProductId))
             {
@@ -62,6 +66,9 @@ namespace ShenkinStore.Models
                 productsAmount[product.ProductId] = amount;
                 idToTotalSum[product.ProductId] = product.Price*amount;
             }
+       
+
+
 
         }
 
@@ -75,6 +82,7 @@ namespace ShenkinStore.Models
         }
         public void emptyCart()
         {
+
             var cartItems = db.Products.Where(product => product.CartId == ShoppingCartId);
 
             foreach (var cartItem in cartItems)

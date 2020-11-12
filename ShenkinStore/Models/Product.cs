@@ -33,5 +33,6 @@ namespace ShenkinStore.Models
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
         public string CartId { get; set; }
+      //  public int soldAmount  { get; set; }
     }
 }

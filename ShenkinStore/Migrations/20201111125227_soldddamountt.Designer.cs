@@ -10,8 +10,8 @@ using ShenkinStore.Models;
 namespace ShenkinStore.Migrations
 {
     [DbContext(typeof(ShenkinContext))]
-    [Migration("20201110181101_lalawithtrans")]
-    partial class lalawithtrans
+    [Migration("20201111125227_soldddamountt")]
+    partial class soldddamountt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,9 @@ namespace ShenkinStore.Migrations
 
                     b.Property<bool>("sold")
                         .HasColumnType("bit");
+
+                    b.Property<int>("soldAmount")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 

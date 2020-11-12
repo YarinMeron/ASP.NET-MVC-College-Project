@@ -69,6 +69,9 @@ namespace ShenkinStore.Migrations
                     b.Property<bool>("sold")
                         .HasColumnType("bit");
 
+                    b.Property<int>("soldAmount")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductId");
 
                     b.HasIndex("TransactionId");

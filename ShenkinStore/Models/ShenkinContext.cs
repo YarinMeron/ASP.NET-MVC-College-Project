@@ -21,7 +21,7 @@ namespace ShenkinStore.Models
         public DbSet<Transaction> Transactions { get; set; }
 
 
-        //************* "A Comment in case we'll need for future use" *************
+       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

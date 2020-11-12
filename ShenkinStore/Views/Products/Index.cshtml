@@ -49,8 +49,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            @if (item.inCart == false)
-            {
+            
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -82,7 +81,7 @@
                 <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
             </td>
             <td class="text-center">
-                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 10 }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 1 }, new { @class = "btn btn-info" })
             </td>
             <td class="text-center">
                 <div class="form-group">
@@ -101,7 +100,7 @@
                 <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
 
             </td>
-            }
+            
         </tr>
 }
     </tbody>

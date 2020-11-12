@@ -38,6 +38,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Math": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
             "Facebook": {
               "target": "Package",
               "version": "[7.0.6, )"
@@ -81,6 +89,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "bootstrap": {
               "target": "Package",

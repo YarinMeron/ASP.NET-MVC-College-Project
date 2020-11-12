@@ -50,13 +50,7 @@ namespace ShenkinStore.Controllers
             {
                 var addedProduct = db.Products.Single(product => product.ProductId == id);
                 var cart = ShoppingCart.GetCart(userID.ToString());
-
-
                 cart.AddToCart(addedProduct, amount);
-
-
-
-
 
                 return RedirectToAction("Index", "ShoppingCart");
             }
@@ -67,7 +61,7 @@ namespace ShenkinStore.Controllers
         }
 
 
-        public ActionResult IncreaseProduct(int id)
+        public ActionResult IncreaseProductAmount(int id)
         {
             var userID = HttpContext.Session.GetString("UserID");
 
@@ -78,7 +72,7 @@ namespace ShenkinStore.Controllers
 
 
         }
-        public ActionResult DecreaseProduct(int id)
+        public ActionResult DecreaseProductAmount(int id)
         {
             var userID = HttpContext.Session.GetString("UserID");
 
@@ -133,12 +127,8 @@ namespace ShenkinStore.Controllers
             }
         }
 
-
-
-
-
-        /* Maybe We will need it on Future
-         * For [ChildActionOnly]
+        
+         /* For [ChildActionOnly]
          * See https://stackoverflow.com/questions/10253769/using-childactiononly-in-mvc
          */
         //     [ChildActionOnly]

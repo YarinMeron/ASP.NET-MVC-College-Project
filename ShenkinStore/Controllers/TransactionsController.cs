@@ -23,10 +23,17 @@ namespace ShenkinStore.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            return View(await db.Transactions.ToListAsync());
+
+            return View(await db.Transactions.Include(u=>u.User).ToListAsync());
         }
 
 
+        //public async Task<IActionResult> Max(Product product)
+        //{
+
+        //    var transaction = await db.Transactions.Where(t => t.productslist.Contains(product)).Count();
+        //    return View(await db.Transactions.ToListAsync());
+        //}
 
 
 
@@ -38,7 +45,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await db.Transactions.Include(p => p.productslist)
+            var transaction = await db.Transactions.Include(u=>u.User).Include(p => p.productslist)
                 .FirstOrDefaultAsync(m => m.TransactionId == id);
 
             if (transaction == null)
@@ -73,10 +80,10 @@ namespace ShenkinStore.Controllers
         {
             if (ModelState.IsValid)
             {
-               // db.Add(transaction);
+            
                 db.Transactions.Add(transaction);
                 await db.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
+              
                 return RedirectToAction("Create");
             }
             return View(transaction);
@@ -192,7 +199,7 @@ namespace ShenkinStore.Controllers
                 ShoppingCart shoppingCart = new ShoppingCart
                 {
                     ShoppingCartId = HttpContext.Session.GetString("UserID").ToString() 
-                //ShoppingCartId = user.UserId.ToString()
+             
            
 
                 };
@@ -200,9 +207,9 @@ namespace ShenkinStore.Controllers
                 Transaction transaction = shoppingCart.CreateTransaction(shoppingCart);
                 if (transaction.Amount != 0)
                 {
-                    //user.Transactions = new List<Transaction>();
+         
                     user.Transactions.Add(transaction);
-                   // shoppingCart.emptyCart();
+                 
                    
                     db.SaveChanges();
                     if (transaction != null)

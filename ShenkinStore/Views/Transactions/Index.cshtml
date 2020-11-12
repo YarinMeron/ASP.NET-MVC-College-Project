@@ -22,6 +22,9 @@
 <table class="table text-right">
     <tr>
         <th>
+            User Name
+        </th>
+        <th>
             Transaction Number
         </th>
         <th>
@@ -39,6 +42,9 @@
     @foreach (var item in Model)
     {
 <tr>
+    <td>
+        @Html.DisplayFor(modelItem=>item.User.UserName)
+    </td>
     <td>
         @Html.DisplayFor(modelItem => item.TransactionId)
     </td>

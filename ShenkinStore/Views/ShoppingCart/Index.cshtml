@@ -64,11 +64,11 @@
                 <div class="col col-qty tuck layout-inline align-center" >
                     <section c width="100px">
 
-                        <a href='@Url.Action("IncreaseProduct", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
+                        <a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
 
                         <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1" class="align-center" />
 
-                        <a href='@Url.Action("DecreaseProduct", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
+                        <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
                     </section>
                 </div>
 

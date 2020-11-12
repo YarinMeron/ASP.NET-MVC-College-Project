@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShenkinStore.Models;
+using ShenkinStore.ViewModels;
 
 namespace ShenkinStore.Controllers
 {
@@ -21,6 +22,18 @@ namespace ShenkinStore.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult ProductsLabels()
+        {
+            KmeansAlgo kmeans = new KmeansAlgo();
+            var viewModel = new KmeansViewModel
+            {
+                labels = kmeans.k_means2(),
+                topproducts=kmeans.distans()
+            };
+         
+            return View(viewModel);
         }
         public IActionResult Contact()
         {

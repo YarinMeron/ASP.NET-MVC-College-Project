@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "CxC7+v3C2nifjPQqPJGdK9q8KHVxVwc3csc927S9BB8HgCHhvDtrr7L8Vd+ffw95++/ZzrZNER0T70fYqcijEA==",
+  "dgSpecHash": "kllKwHmwIF+/t3Q8obq7xuNzaUptQRVx+fcnJz3L/NEah8Fc95ZW4MaTFz8An4jEOqhD7w/Hno3en+H+8gL+kg==",
   "success": true,
   "projectFilePath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\eliordayari\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\eliordayari\\.nuget\\packages\\accord.machinelearning\\3.8.0\\accord.machinelearning.3.8.0.nupkg.sha512",
+    "C:\\Users\\eliordayari\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\eliordayari\\.nuget\\packages\\accord.statistics\\3.8.0\\accord.statistics.3.8.0.nupkg.sha512",
     "C:\\Users\\eliordayari\\.nuget\\packages\\bootstrap\\4.5.2\\bootstrap.4.5.2.nupkg.sha512",
     "C:\\Users\\eliordayari\\.nuget\\packages\\facebook\\7.0.6\\facebook.7.0.6.nupkg.sha512",
     "C:\\Users\\eliordayari\\.nuget\\packages\\jquery\\3.5.1\\jquery.3.5.1.nupkg.sha512",
