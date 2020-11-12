@@ -4,9 +4,9 @@
 @model IEnumerable<ShenkinStore.Models.Product>
 
 
-        @foreach (var item in Model)
-        {
-            
+@foreach (var item in Model)
+{
+
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.ProductName)
@@ -49,7 +49,7 @@
         }
     </td>
 </tr>
-            }
+}
         }
 
 

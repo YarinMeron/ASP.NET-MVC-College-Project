@@ -10,19 +10,56 @@
 
 
 @*<table>
-    <tr>
-        <td><input style="padding: 6px;" type="text" id="username" placeholder="Product Name" /></td>
-        <td> &nbsp; <button style="padding: 7px;" onclick="window.location = '/Products/Search?productName='+ getElementById('username').value"> Search by name </button></td>
-    </tr>
-</table>*@
+        <tr>
+            <td><input style="padding: 6px;" type="text" id="username" placeholder="Product Name" /></td>
+            <td> &nbsp; <button style="padding: 7px;" onclick="window.location = '/Products/Search?productName='+ getElementById('username').value"> Search by name </button></td>
+        </tr>
+    </table>*@
 
-<!--top bar search-->
-<form  asp-action="Search" id="myForm">
+<!--Search Product By Name-->
+<form asp-action="Search" id="myForm">
     <div class="form-group">
-        <input name="productName" class="form-control" autocomplete="off" id="filterName" type="text" placeholder="Product Name">   
-        </div>
+        <input name="productName" class="form-control" autocomplete="off" id="filterName" type="text" placeholder="Search By Product Name">
+    </div>
 </form>
 
+
+<!------------Search Product By Gender Brand and Color---------->
+
+
+<div class="form-container">
+    <form id="myForm2" asp-action="aSearch">
+        Filter your favs!
+        <select id="gender" name="gender" type="select">
+            <option value="">Gender</option>
+            <option value="female">Feamle</option>
+            <option value="male">Male</option>
+            <option value="unisex">Unisex</option>
+        </select>
+        <select id="product_type" name="product_type" type="select">
+            <option value="">Brand</option>
+            <option value="Bag">Bags</option>
+            <option value="SideBag">Side Bags</option>
+            <option value="Wallet">Wallets</option>
+        </select>
+        <select id="color" name="color" type="select">
+            <option value="">Color</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Brown">Brown</option>
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+        </select>
+        <input type="submit" value="aSearch">
+    </form>
+</div>
+
+
+
+
+
+
+<!-------------------------------------------------------->
 
 <table class="table">
     <thead>
@@ -63,83 +100,79 @@
     <tbody>
         @foreach (var item in Model)
         {
-            if ((int)item.productType == 1)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Colorr)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.productType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.productBrand)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Metrial)
-                    </td>
-                    <td>
-                        <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
-                    </td>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Colorr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productBrand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Metrial)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+
                     @if (Context.Session.GetInt32("UserType") == 1)
                     {
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>|
-                            <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>|
-                            <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-                        </td>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit &nsub; </a>
+                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+
                     }
-                </tr>
-            }
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 
+
+<!--Searching Scripts-->
 @section Scripts {
-<script src="~/js/filter.js"></script>
+    <script src="~/js/Product/filterName.js"></script>
+    <script src="~/js/Product/aSearch.js"></script>
+}
 
 }
 
-@*<div>
-        <video class="videot" id="videot" controls loop>
-            <source src="~/Videos/videoplayback.mp4" type="video/mp4">
-            <object data="~/Videos/videoplayback.mp4" height="1080">
-                <param name="wmode" value="transparent">
-                <param name="autoplay" value="ture">
-                <param name="loop" value="true">
-            </object>
-        </video>
-    </div>
 
 
 
-    <link rel="stylesheet" type="text/css" href="~/css/ProductsGrid.css" />
-    @if (Context.Session.GetInt32("UserType") == 1)
-    {
-        <p>
-            {
-            <a asp-action="Create">Create New</a>
-            }
-        </p>
-    }
+
+<!----<link rel="stylesheet" type="text/css" href="~/css/ProductsGrid.css" /--!>
+@if (Context.Session.GetInt32("UserType") == 1)
+{
+    <p>
+        {
+        <a asp-action="Create">Create New</a>
+        }
+    </p>
+}
 
 
 
+@*
     <div class="shell">
         <div>
             <div class="row">

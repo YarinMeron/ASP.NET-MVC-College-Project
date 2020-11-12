@@ -408,3 +408,4 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\DisplayGraphs.cshtml.g.cs
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Search.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\aSearch.cshtml.g.cs

@@ -196,5 +196,27 @@ namespace ShenkinStore.Controllers
 
 
         }
+
+        public async Task<IActionResult> aSearch(Gender gender , ProductType product_type, Color color)
+        {
+            //if (color.ToString() == null && gender.ToString() == null && product_type.ToString() == null)
+            //    return PartialView(await products.ToListAsync());
+
+            var products = from p in _context.Products
+                        select p;
+
+            if(color.ToString() != null)
+            products = products.Where(p => p.Colorr == color);
+            Console.Write(products);
+
+            if (gender.ToString() != null)
+            products = products.Where(p => p.gender == gender);
+
+            if (product_type.ToString() != null)
+            products = products.Where(p => p.productType == product_type);
+
+
+            return PartialView(await products.ToListAsync());
+        }
     } 
 }
