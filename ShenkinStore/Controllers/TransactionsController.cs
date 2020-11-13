@@ -23,7 +23,7 @@ namespace ShenkinStore.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            return View(await db.Transactions.ToListAsync());
+            return View(await db.Transactions.Include(t=>t.User).ToListAsync());
         }
 
 
@@ -196,6 +196,20 @@ namespace ShenkinStore.Controllers
            
 
                 };
+                var viewModel = new ShoppingCartViewModel
+                {
+                    CartItems = shoppingCart.GetCartItems(),
+                    CartTotal = shoppingCart.GetTotal(),
+                    Amounts = shoppingCart.GetAmount(),
+                    TotalPricePerProduct = shoppingCart.GetProductTotal()
+                };
+                List<Product> pro = shoppingCart.GetCartItems();
+                Dictionary<int, int> amonuts = viewModel.Amounts;
+                foreach(Product p in pro)
+                {
+                    // db.Products.Where(product => product.ProductId == p.ProductId).Select(product => product.Quantity)++;
+                    p.Quantity+=amonuts[p.ProductId];
+                }
                 
                 Transaction transaction = shoppingCart.CreateTransaction(shoppingCart);
                 if (transaction.Amount != 0)

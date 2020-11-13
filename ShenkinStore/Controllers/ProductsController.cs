@@ -20,6 +20,15 @@ namespace ShenkinStore.Controllers
         {
             _context = context;
         }
+        public IActionResult GroupBy()
+        {
+
+            List<Product> prodlist = new List<Product>();
+            prodlist = _context.Products.ToList();
+            var query = prodlist.GroupBy(product => product.productType);
+            ViewBag.Query = query;
+            return View();
+        }
         public IActionResult Color()
         {
             return View();

@@ -1,0 +1,69 @@
+﻿@model ShenkinStore.ViewModels.KmeansViewModel
+@{
+    ViewData["Title"] = "ProductsLabels";
+}
+
+<h1>ProductsLabels</h1>
+<head>
+    <link rel="stylesheet" href="~/css/cartCss.css" />
+</head>
+<div class="containerNew">
+
+    <div class="heading">
+        <h1>
+            <span class="shopper align-center"></span>Your Machine Learning
+        </h1>
+
+        <a href="https://localhost:44397/Products" class="visibility-cart transition is-open">X</a>
+    </div>
+
+
+    <table class="table align-center">
+        @foreach (var item in Model.topProduct)
+        {
+            <thead>
+
+            <tr class="align-center">
+                <th class="th">
+                    Product Name
+                </th>
+                <th class="th">
+                    Product Type
+                </th>
+                <th class="th">
+                    Price
+                </th>
+                <th  class="th">
+
+                </th>
+
+            </tr>
+            
+        </thead>
+            <tbody>
+
+            <td class="fonts">
+
+                @item.ProductName
+
+            </td>
+            <td class="fonts">
+                @Html.DisplayFor(modelItem => item.productType)
+            </td>
+            <td class="fonts">
+
+
+                @item.Price
+
+            </td>
+            <td class="fonts">
+                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 1 }, new { @class = "btn btn-info" })
+            </td>
+
+            
+            </tbody>
+        }
+        </table>

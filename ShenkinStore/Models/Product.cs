@@ -15,7 +15,7 @@ namespace ShenkinStore.Models
         public string ProductName { get; set; }
 
       //  [Column(TypeName = "decimal(18, 2)")]
-       [DisplayFormat(DataFormatString = "{0:C0}")]
+      // [DisplayFormat(DataFormatString = "{0:C0}")]
         
         public decimal Price { get; set; }
         [Display(Name = "Color")]
@@ -27,7 +27,7 @@ namespace ShenkinStore.Models
         [Display(Name = "Gender")]
         public Gender gender { get; set; }
         public string Description { get; set; }
-        [Range(1, 100, ErrorMessage = "Can only be between 1 .. 100")]
+        [Range(0, 100, ErrorMessage = "Can only be between 1 .. 100")]
         public int Quantity { get; set; }
         public string Metrial { get; set; }
         [Display(Name = "Image")]

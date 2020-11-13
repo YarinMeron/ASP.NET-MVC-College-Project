@@ -18,12 +18,7 @@ namespace ShenkinStore.Models
 
         public double[] Tolist(Product p)
         {
-            //if (p.productType.Equals(0))
-            //    return new double[] { 100, (double)p.Price, (double)p.gender, (double)p.Colorr, (double)p.productBrand };
-            //else if (p.productType.Equals(1))
-            //    return new double[] { 200, (double)p.Price, (double)p.gender, (double)p.Colorr, (double)p.productBrand };
-            //else
-            //    return new double[] { 300, (double)p.Price, (double)p.gender, (double)p.Colorr, (double)p.productBrand };
+         
             if (p.productType.Equals(0))
                 return new double[] { (double)p.Quantity };
             else if (p.productType.Equals(1))
@@ -42,28 +37,16 @@ namespace ShenkinStore.Models
             // Declare some observations
             List<Product> allproducts = new List<Product>();
             allproducts.AddRange(from pd in _context.Products where pd.Price > 0 select pd);
-            double[][] observations = { 
-                Tolist(allproducts[0]),
-                Tolist(allproducts[1]),
-                Tolist(allproducts[2]),
-                Tolist(allproducts[3]),
-                Tolist(allproducts[4]),
-                Tolist(allproducts[5]),
-                //Tolist(allproducts[6]),
-                //Tolist(allproducts[8]),
-                //Tolist(allproducts[9]),
-                //Tolist(allproducts[10]),
-                //Tolist(allproducts[11]),
-                //Tolist(allproducts[12]),
-                //Tolist(allproducts[13]),
-                //Tolist(allproducts[14]),
-                //Tolist(allproducts[15]),
-                //Tolist(allproducts[16]),
-                //Tolist(allproducts[17]),
-                //Tolist(allproducts[18]),
-                //Tolist(allproducts[19]),
+          
+            double[][] observations = new double[allproducts.Count()][];
+            for (int i = 0; i < allproducts.Count(); i++)
+            {
 
-           };
+                observations[i] = new double[10];
+                observations[i] = Tolist(allproducts[i]);
+           
+
+            }
             // Create a new K-Means algorithm
             KMeans kmeans = new KMeans(k: 3)
             {

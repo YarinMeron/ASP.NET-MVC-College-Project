@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ShenkinStore.Models.Product>
+@{
+    ViewData["Title"] = "GroupBy";
+   // var query = Model.ToList().GroupBy(product=>product.productType, product => product.ProductName);
+
+
+}
+
+@*<h1>GroupBy</h1>
+<p>
+    @foreach (var
+      TypeGroup in ViewBag.Query)
+    {
+
+
+        @TypeGroup.Key;
+   
+
+
+        @foreach(var product in TypeGroup)
+        {
+            @product.ProductName
+            @Url.Content(product.ImageUrl)
+       
+
+        }
+    }
+
+</p>*@
+
+
+
+<table class="table">
+    @foreach (var
+TypeGroup in ViewBag.Query)
+    {
+        
+        <thead>
+
+
+            <tr>
+                @*<p style="font-size=20"> @TypeGroup.Key</p>*@
+                <th>
+                   Product Type: @TypeGroup.Key
+                </th>
+                <th>
+                    Product Name
+                </th>
+
+                <th>
+                    Price
+                </th>
+
+                <th>
+                    Image
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in TypeGroup)
+            {
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        @item.ProductName
+                    </td>
+                    <td>
+                      @item.Price
+                    </td>
+                   
+                    <td>
+                        <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    }
+    </table>
