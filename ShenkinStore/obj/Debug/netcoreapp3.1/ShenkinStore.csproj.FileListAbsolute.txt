@@ -427,3 +427,14 @@ C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\ProductsLabels.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Accord.dll.config
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Accord.dll
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Accord.MachineLearning.dll
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Accord.Math.Core.dll
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Accord.Math.dll
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Accord.Statistics.dll
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\ProductsLabels.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\CartSummary.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
+C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\newCart.cshtml.g.cs

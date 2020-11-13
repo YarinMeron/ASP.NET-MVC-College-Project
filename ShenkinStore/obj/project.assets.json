@@ -10179,20 +10179,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\eliordayari\\.nuget\\packages\\": {}
+    "C:\\Users\\yarinmeron\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+      "projectUniqueName": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
       "projectName": "ShenkinStore",
-      "projectPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
-      "packagesPath": "C:\\Users\\eliordayari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\eliordayari\\source\\repos\\ShenkinStore\\ShenkinStore\\obj\\",
+      "projectPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+      "packagesPath": "C:\\Users\\yarinmeron\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\eliordayari\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\yarinmeron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

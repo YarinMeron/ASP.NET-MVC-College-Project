@@ -14,7 +14,7 @@ namespace ShenkinStore.Controllers
 {
     public class UsersController : Controller
     {
-      
+
         private readonly ShenkinContext _context;
 
         public UsersController(ShenkinContext context)
@@ -37,7 +37,7 @@ namespace ShenkinStore.Controllers
             }
 
             var user = await _context.Users.Include(t => t.Transactions)
-                
+
                 .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
@@ -137,7 +137,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            
+
             return View(user);
         }
 
@@ -149,7 +149,7 @@ namespace ShenkinStore.Controllers
             var user = await _context.Users.FindAsync(id);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
-            
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -184,7 +184,7 @@ namespace ShenkinStore.Controllers
                 else
                 {
                     ModelState.AddModelError("Error", "User Name is already exists!");
-                   return View();
+                    return View();
                 }
             }
             return View();
@@ -215,8 +215,8 @@ namespace ShenkinStore.Controllers
 
                     return RedirectToAction("Index", "Products");
                 }
-              
-                
+
+
             }
             return View();
         }
