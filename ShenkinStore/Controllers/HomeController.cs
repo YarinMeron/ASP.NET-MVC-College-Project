@@ -19,6 +19,17 @@ namespace ShenkinStore.Controllers
             _logger = logger;
         }
 
+        public IActionResult ProductsLabels()
+        {
+            KmeansAlgo kmeans = new KmeansAlgo();
+            KmeansViewModel viewModel = new KmeansViewModel
+            {
+                labels = kmeans.k_means2(),
+                topProduct = kmeans.distans()
+            };
+            return View(viewModel);
+        }
+
         public IActionResult Index()
         {
             return View();

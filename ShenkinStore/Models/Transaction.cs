@@ -17,16 +17,17 @@ namespace ShenkinStore.Models
 
         // TODO: Lets see how we can secure this prop
         public bool Paid { get; set; }
-
+        [Display(Name = "Transaction Date")]
         [DataType(DataType.Date)]
         public DateTime TransDate { get; set; }
-
+        [Display(Name = "Total Price :")]
         public decimal Amount { get; set; }
 
         public virtual User User { get; set; }
 
         public virtual ShoppingCart Cart { get; set; }
 
+        [Display(Name = "List of Products :")]
         public ICollection<Product> productslist { get; set; }
     }
 }

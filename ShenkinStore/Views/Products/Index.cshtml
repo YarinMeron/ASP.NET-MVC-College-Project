@@ -9,6 +9,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<p>
+    <a asp-action="GroupBy">Products By Type</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +21,7 @@
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Price) ₪
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Colorr)
