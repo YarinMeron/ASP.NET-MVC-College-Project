@@ -10,14 +10,13 @@
     <a asp-action="Create">Create New Product</a>
 }
 
-<!--Search Product By Name-->
+<!----------------------------------Search Product By Name---------------------------->
 <form asp-action="Search" id="myForm">
     <div class="form-group">
         <input name="productName" class="form-control" autocomplete="off" id="filterName" type="text" placeholder="Search By Product Name">
     </div>
 </form>
-
-
+<!-------------------------------------------------------------------------------------->
 <!------------Search Product By Gender Brand and Color---------->
 
 <div class="form-container">
@@ -30,7 +29,7 @@
             <option value="unisex">Unisex</option>
         </select>
         <select id="product_type" name="product_type" type="select">
-            <option value="">Brand</option>
+            <option value="">Product Type</option>
             <option value="Bag">Bags</option>
             <option value="SideBag">Side Bags</option>
             <option value="Wallet">Wallets</option>
@@ -112,9 +111,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Metrial)
                 </td>
@@ -134,16 +130,6 @@
 
                     }
                 </td>
-                <!--<td class="text-center">-->
-                @*<div class="form-group">
-                        <label asp-for="@item.Quantity" class="control-label"></label>
-                        <input asp-for="@item.Quantity" class="form-control" />
-                        <span asp-validation-for="@item.Quantity" class="text-danger"></span>
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>*@
-
-                <!--</td>-->
-
             </tr>
         }
     </tbody>
