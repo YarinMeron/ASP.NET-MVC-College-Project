@@ -19,22 +19,33 @@ namespace ShenkinStore.Controllers
             _logger = logger;
         }
 
+        public IActionResult ProductsLabels()
+        {
+            KmeansAlgo kmeans = new KmeansAlgo();
+            KmeansViewModel viewModel = new KmeansViewModel
+            {
+                labels = kmeans.k_means2(),
+                topproducts = kmeans.distans()
+            };
+            return View(viewModel);
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ProductsLabels()
-        {
-            KmeansAlgo kmeans = new KmeansAlgo();
-            var viewModel = new KmeansViewModel
-            {
-                labels = kmeans.k_means2(),
-                topproducts=kmeans.distans()
-            };
+        //public IActionResult ProductsLabels()
+        //{
+        //    KmeansAlgo kmeans = new KmeansAlgo();
+        //    var viewModel = new KmeansViewModel
+        //    {
+        //        labels = kmeans.k_means2(),
+        //        topproducts=kmeans.distans()
+        //    };
          
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
         public IActionResult Contact()
         {
             return View();

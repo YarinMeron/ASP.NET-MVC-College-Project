@@ -23,17 +23,10 @@ namespace ShenkinStore.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-
-            return View(await db.Transactions.Include(u=>u.User).ToListAsync());
+            return View(await db.Transactions.Include(t => t.User).ToListAsync());
         }
 
 
-        //public async Task<IActionResult> Max(Product product)
-        //{
-
-        //    var transaction = await db.Transactions.Where(t => t.productslist.Contains(product)).Count();
-        //    return View(await db.Transactions.ToListAsync());
-        //}
 
 
 
@@ -45,7 +38,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await db.Transactions.Include(u=>u.User).Include(p => p.productslist)
+            var transaction = await db.Transactions.Include(p => p.productslist)
                 .FirstOrDefaultAsync(m => m.TransactionId == id);
 
             if (transaction == null)
@@ -80,10 +73,10 @@ namespace ShenkinStore.Controllers
         {
             if (ModelState.IsValid)
             {
-            
+                // db.Add(transaction);
                 db.Transactions.Add(transaction);
                 await db.SaveChangesAsync();
-              
+                //return RedirectToAction(nameof(Index));
                 return RedirectToAction("Create");
             }
             return View(transaction);
@@ -198,19 +191,33 @@ namespace ShenkinStore.Controllers
                 }
                 ShoppingCart shoppingCart = new ShoppingCart
                 {
-                    ShoppingCartId = HttpContext.Session.GetString("UserID").ToString() 
-             
-           
+                    ShoppingCartId = HttpContext.Session.GetString("UserID").ToString()
+                    //ShoppingCartId = user.UserId.ToString()
+
 
                 };
-                
+                var viewModel = new ShoppingCartViewModel
+                {
+                    CartItems = shoppingCart.GetCartItems(),
+                    CartTotal = shoppingCart.GetTotal(),
+                    Amounts = shoppingCart.GetAmount(),
+                    TotalPricePerProduct = shoppingCart.GetProductTotal()
+                };
+                List<Product> pro = shoppingCart.GetCartItems();
+                Dictionary<int, int> amonuts = viewModel.Amounts;
+                foreach (Product p in pro)
+                {
+                    // db.Products.Where(product => product.ProductId == p.ProductId).Select(product => product.Quantity)++;
+                    p.Quantity += amonuts[p.ProductId];
+                }
+
                 Transaction transaction = shoppingCart.CreateTransaction(shoppingCart);
                 if (transaction.Amount != 0)
                 {
-         
+                    //user.Transactions = new List<Transaction>();
                     user.Transactions.Add(transaction);
-                 
-                   
+                    // shoppingCart.emptyCart();
+
                     db.SaveChanges();
                     if (transaction != null)
                     {
@@ -219,9 +226,9 @@ namespace ShenkinStore.Controllers
                             CartItems = db.Products.Where(product => product.CartId == user.UserId.ToString()).ToList(),
                             amount = transaction.Amount
                         };
-                       
-                    
-                
+
+
+
                         //return View(transactionView);    // We can redirect to wherever we want..
                         return RedirectToAction("emptyCart", "ShoppingCart");
                     }
@@ -234,16 +241,6 @@ namespace ShenkinStore.Controllers
 
         }
 
-        public async Task<IActionResult> DisplayGraphs()
-        {
-
-            List<User> users = db.Users.ToList();
-            List<Transaction> transactions = db.Transactions.ToList();
-            ViewBag.users = users;
-            ViewBag.transactions = transactions;
-            return View();
-
-        }
 
 
 
