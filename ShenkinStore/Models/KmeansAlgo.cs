@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 using Accord.MachineLearning;
 using Accord.Math.Distances;
 
+/// <summary>
+/// A big Credit to http://accord-framework.net/docs/html/T_Accord_MachineLearning_KMeans.htm for Great explaning
+/// from ShenkinBag App
+/// </summary>
+
 namespace ShenkinStore.Models
 {
     public class KmeansAlgo
