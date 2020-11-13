@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShenkinStore.Models;
 
 namespace ShenkinStore.Migrations
 {
     [DbContext(typeof(ShenkinContext))]
-    partial class ShenkinContextModelSnapshot : ModelSnapshot
+    [Migration("20201112185640_Yarin")]
+    partial class Yarin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,6 +70,9 @@ namespace ShenkinStore.Migrations
 
                     b.Property<bool>("sold")
                         .HasColumnType("bit");
+
+                    b.Property<int>("soldAmount")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 
