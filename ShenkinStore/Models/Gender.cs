@@ -8,7 +8,7 @@ namespace ShenkinStore.Models
     public enum Gender
     {
         male,
-        famale,
+        female,
         unisex
     }
 }

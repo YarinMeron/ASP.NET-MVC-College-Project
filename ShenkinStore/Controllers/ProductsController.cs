@@ -167,6 +167,7 @@ namespace ShenkinStore.Controllers
         {
             dynamic messagePost = new ExpandoObject();
             messagePost.message = "New product is in the shop !";
+            
 
             string acccessToken = "EAAFjnLLJDO0BAA3cpMU0Fko2Y6tJAf8LLZCWUsfZAoJ7D0MHfCoveQT3rTJBoljjqezgUpcOLKjHUy4MZAeZBsbEOsWvFwM351TLHlFNFIHyp6PMf3jh3ZAFgWu9wv88tZCSGn1ZC1GL75VHVZCnKV0aWhlNuiPwK9A87kkxFGWZC6QZDZD";
             FacebookClient appp = new FacebookClient(acccessToken); try
@@ -178,6 +179,39 @@ namespace ShenkinStore.Controllers
                 System.Console.WriteLine("FacebookOAuthException - postId is null");
             }
 
+        }
+
+        public async Task<IActionResult> Search(string productName)
+        {
+            var query = from p in _context.Products
+                        where p.ProductName.Contains(productName)
+                        select p;
+
+            return PartialView(await query.ToListAsync());
+
+
+        }
+
+        public async Task<IActionResult> aSearch(string gender, string product_type, string color)
+        {
+            //if (color.ToString() == null && gender.ToString() == null && product_type.ToString() == null)
+            //    return PartialView(await products.ToListAsync());
+
+            var products = from p in _context.Products
+                           select p;
+
+            if (color != null)
+                products = products.Where(p => p.Colorr == (Models.Color)Enum.Parse(typeof(Models.Color), color, true));
+
+
+            if (gender != null)
+                products = products.Where(p => p.gender == (Models.Gender)Enum.Parse(typeof(Models.Gender), gender, true));
+
+            if (product_type != null)
+                products = products.Where(p => p.productType == (Models.ProductType)Enum.Parse(typeof(Models.ProductType), product_type, true));
+
+
+            return PartialView(await products.ToListAsync());
         }
 
 
