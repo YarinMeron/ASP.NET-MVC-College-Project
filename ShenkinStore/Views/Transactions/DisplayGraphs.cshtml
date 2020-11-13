@@ -1,0 +1,174 @@
+﻿@using ShenkinStore.Models
+
+@{
+    ViewData["Title"] = "Displaygraphs";
+}
+
+
+
+@{
+    List<User> _users = ViewBag.users;
+    List<Transaction> _transaction = ViewBag.transactions;
+
+    int regularUsers = _users.Where(user => (int)user.userType == 0).Count();
+    int AdminUsers = _users.Where(user => (int)user.userType == 1).Count();
+}
+<h1 style="text-align:center;">Monthly Transactions</h1>
+<!-- First Chart -->
+<center>
+    <div id="app">
+        <div id="chart">
+            <svg id="firstSvg"></svg>
+        </div>
+        @*<div id="data">
+            <ul></ul>*@
+    </div>
+    </div>
+</center>
+
+<!-- Imports d3js libraries -->
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src="https://d3js.org/d3-scale.v3.min.js"></script>
+<script src="https://d3js.org/d3-axis.v1.min.js"></script>
+
+<!-- First chart script -->
+<script type="text/javascript">
+
+    var DATA = [
+        { id: 'd2', Amount: @_transaction.Where(o=> o.TransDate.Month == 2).ToList().Count, month: 'February' },
+        { id: 'd2', Amount: @_transaction.Where(o=> o.TransDate.Month == 2).ToList().Count, month: 'February' },
+        { id: 'd3', Amount: @_transaction.Where(o=> o.TransDate.Month == 3).ToList().Count, month: 'March' },
+        { id: 'd4', Amount: @_transaction.Where(o=> o.TransDate.Month == 4).ToList().Count, month: 'April' },
+        { id: 'd5', Amount: @_transaction.Where(o=> o.TransDate.Month == 5).ToList().Count , month: 'May' },
+        { id: 'd1', Amount: @_transaction.Where(o=> o.TransDate.Month == 1).ToList().Count , month: 'January' },
+        { id: 'd6', Amount: @_transaction.Where(o=> o.TransDate.Month == 6).ToList().Count , month: 'June' },
+        { id: 'd7', Amount: @_transaction.Where(o=> o.TransDate.Month == 7).ToList().Count , month: 'July' },
+        { id: 'd8', Amount: @_transaction.Where(o=> o.TransDate.Month == 8).ToList().Count , month: 'August' },
+        { id: 'd9', Amount: @_transaction.Where(o=> o.TransDate.Month == 9).ToList().Count, month: 'September' },
+        { id: 'd10', Amount:@_transaction.Where(o=> o.TransDate.Month == 10).ToList().Count, month: 'October' },
+        { id: 'd11', Amount:@_transaction.Where(o=> o.TransDate.Month == 11).ToList().Count, month: 'November' },
+        { id: 'd12', Amount:@_transaction.Where(o=> o.TransDate.Month == 12).ToList().Count, month: 'December' }];
+    var margins = { top: 20, bottom: 10 };
+    var chartWidth = 1000, chartHegiht = 400 - margins.top - margins.bottom;
+    var xScale = d3.scaleBand().domain(DATA.map((dataPoint) => dataPoint.month)).rangeRound([0, chartWidth]).padding(0.2);
+    var yScale = d3.scaleLinear().domain([0, d3.max(DATA, data => data.Amount) + 1]).range([chartHegiht, 0]);
+    var selectedData = DATA;
+    var chartContainer = d3.select('#firstSvg')
+        .attr('width', chartWidth)
+        .attr('height', chartHegiht + margins.top + margins.bottom)
+        .append('g');
+    var chart = chartContainer;
+    // Create the bars
+    function renderChart() {
+        chart
+            .selectAll('.bar')
+            .data(selectedData, data => data.id)
+            .enter()
+            .append('rect')
+            .classed('bar', true)
+            .attr('width', xScale.bandwidth())
+            .attr('height', data => chartHegiht - yScale(data.Amount))
+            .attr('x', data => xScale(data.month))
+            .attr('y', data => yScale(data.Amount));
+        chart
+            .selectAll('.bar')
+            .data(selectedData, data => data.id)
+            .exit()
+            .remove();
+        // Add Text
+        chart
+            .selectAll('.label')
+            .data(selectedData, data => data.id)
+            .enter()
+            .append('text')
+            .text(data => data.Amount)
+            .attr('x', data => xScale(data.month) + xScale.bandwidth() / 2)
+            .attr('y', data => yScale(data.Amount) - 10)
+            .attr('text-anchor', 'middle')
+            .classed('label', true);
+        chart
+            .selectAll('.label')
+            .data(selectedData, data => data.id)
+            .exit()
+            .remove();
+    }
+    renderChart();
+    // Add x line
+    chart
+        .append('g')
+        .call(d3.axisBottom(xScale))
+        .attr('transform', `translate(0,${chartHegiht + 5})`)
+        .attr('color', '#4f000e');
+    var unselected = [];
+    var listItem = d3
+        .select('#data')
+        .select('ul')
+        .selectAll('li')
+        .data(DATA)
+        .enter()
+        .append('li')
+        .append('span')
+        .text(data => data.month)
+        .append('input')
+        .attr('type', 'checkbox')
+        .attr('checked', true)
+        .on('change', (data) => {
+            if (unselected.indexOf(data.id) == -1) {
+                unselected.push(data.id);
+            } else {
+                unselected = unselected.filter(id => id != data.id)
+            }
+            selectedData = DATA.filter(data => unselected.indexOf(data.id) == -1);
+            renderChart();
+        });
+</script>
+
+<!-- Second Chart -->
+<center>
+    <div id="secondApp">
+        <div id="secondChart">
+            <svg id="secondSvg"></svg>
+        </div>
+        <div id="secondData">
+            <ul>
+                <li>
+                    <span style="background-color: yellow;"> &nbsp; </span> &nbsp;&nbsp; Admin users &nbsp;&nbsp; @AdminUsers
+                </li>
+                <li>
+                    <span style="background-color: blue;"> &nbsp; </span> &nbsp;&nbsp; Regular users &nbsp;&nbsp; @regularUsers
+                </li>
+            </ul>
+        </div>
+    </div>
+</center>
+<!-- Second chart script -->
+<script type="text/javascript">
+    var DATA2 = { a: @regularUsers, b: @AdminUsers }
+    var width = 450, height = 450, margin = 40;
+    var radius = Math.min(width, height) / 2 - margin;
+    var container = d3
+        .select('#secondSvg')
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    var pie = d3.pie()
+        .value(data => data.value)
+    var data_ready = pie(d3.entries(DATA2))
+    var color = 'blue';
+    container
+        .selectAll('groups')
+        .data(data_ready)
+        .enter()
+        .append('path')
+        .attr('d', d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius)
+        )
+        .attr('fill', () => {
+            if (color == 'blue') { color = 'yellow'; return 'blue'; } else return 'yellow';
+        })
+        .attr("stroke", "black")
+        .style("stroke-width", "2px")
+        .style("opacity", 0.7);
+</script>

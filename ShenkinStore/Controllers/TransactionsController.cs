@@ -234,6 +234,16 @@ namespace ShenkinStore.Controllers
 
         }
 
+        public async Task<IActionResult> DisplayGraphs()
+        {
+
+            List<User> users = db.Users.ToList();
+            List<Transaction> transactions = db.Transactions.ToList();
+            ViewBag.users = users;
+            ViewBag.transactions = transactions;
+            return View();
+
+        }
 
 
 

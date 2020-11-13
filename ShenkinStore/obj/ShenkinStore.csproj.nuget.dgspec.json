@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {}
+    "C:\\Users\\yarinmeron\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {
+    "C:\\Users\\yarinmeron\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+        "projectUniqueName": "C:\\Users\\yarinmeron\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
         "projectName": "ShenkinStore",
-        "projectPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
+        "projectPath": "C:\\Users\\yarinmeron\\source\\repos\\ShenkinStore\\ShenkinStore\\ShenkinStore.csproj",
         "packagesPath": "C:\\Users\\yarinmeron\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yarinmeron\\Source\\Repos\\ShenkinStore\\ShenkinStore\\obj\\",
+        "outputPath": "C:\\Users\\yarinmeron\\source\\repos\\ShenkinStore\\ShenkinStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
