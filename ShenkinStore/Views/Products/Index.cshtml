@@ -7,7 +7,7 @@
 
 @if (Context.Session.GetInt32("UserType") == 1)
 {
-    <a asp-action="Create">Create New Product</a>
+    <a asp-action="Create"><h3>Create New Product</h3></a>
 }
 
 <!----------------------------------Search Product By Name---------------------------->
@@ -73,9 +73,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Quantity)
-                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Metrial)
             </th>
