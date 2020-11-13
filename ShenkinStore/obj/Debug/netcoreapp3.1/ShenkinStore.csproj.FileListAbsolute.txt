@@ -440,3 +440,4 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\newCart.cshtml.g.cs
 C:\Users\yarinmeron\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\DisplayGraphs.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\DisplayGraphs.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\GroupBy.cshtml.g.cs

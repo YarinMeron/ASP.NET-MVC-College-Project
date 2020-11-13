@@ -25,7 +25,7 @@ namespace ShenkinStore.Controllers
             KmeansViewModel viewModel = new KmeansViewModel
             {
                 labels = kmeans.k_means2(),
-                topProduct = kmeans.distans()
+                topproducts = kmeans.distans()
             };
             return View(viewModel);
         }
@@ -35,17 +35,17 @@ namespace ShenkinStore.Controllers
             return View();
         }
 
-        public IActionResult ProductsLabels()
-        {
-            KmeansAlgo kmeans = new KmeansAlgo();
-            var viewModel = new KmeansViewModel
-            {
-                labels = kmeans.k_means2(),
-                topproducts=kmeans.distans()
-            };
+        //public IActionResult ProductsLabels()
+        //{
+        //    KmeansAlgo kmeans = new KmeansAlgo();
+        //    var viewModel = new KmeansViewModel
+        //    {
+        //        labels = kmeans.k_means2(),
+        //        topproducts=kmeans.distans()
+        //    };
          
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
         public IActionResult Contact()
         {
             return View();
