@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ShenkinStore.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paid)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TransactionId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TransactionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TransactionId })
+        </td>
+    </tr>
+}

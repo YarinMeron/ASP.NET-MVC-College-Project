@@ -12,6 +12,15 @@
         <p>
             <a asp-action="Create">Create New</a>
         </p>
+        <p>
+            <a asp-action="Join">User to Transactions</a>
+        </p>
+
+        <form asp-action="Search" id="myForm4">
+            <div class="form-group">
+                <input name="userName" class="form-control" autocomplete="off" id="userNamefilter" type="text" placeholder="Search By Product Name">
+            </div>
+        </form>
         <table class="table">
             <thead>
                 <tr>
@@ -73,4 +82,10 @@
     {
         <h1><b>You can not view this page</b></h1>
     }
+}
+
+@section Scripts {
+
+    <script src="~/js/productsScripts.js"></script>
+
 }

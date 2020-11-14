@@ -32,6 +32,13 @@ namespace ShenkinStore.Controllers
 
         public IActionResult Index()
         {
+            var kmeans = new KmeansAlgo();
+            List<Product> topProductds = kmeans.distans();
+            ViewBag.TopProducts = topProductds;
+            return View();
+        }
+        public IActionResult Canvas()
+        {
             return View();
         }
 
@@ -43,7 +50,7 @@ namespace ShenkinStore.Controllers
         //        labels = kmeans.k_means2(),
         //        topproducts=kmeans.distans()
         //    };
-         
+
         //    return View(viewModel);
         //}
         public IActionResult Contact()

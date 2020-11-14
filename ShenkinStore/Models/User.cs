@@ -25,7 +25,7 @@ namespace ShenkinStore.Models
         public string ConfirmedPassword { get; set; }
         [DataType(DataType.EmailAddress)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email is Requierd.")]
-        [RegularExpression(@"^\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*$", ErrorMessage = "Email is not valid.")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email is not valid.")]
         public string Email { get; set; }
         [Display(Name = "Phone - (Optional)")]
         [DataType(DataType.PhoneNumber)]

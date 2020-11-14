@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 <head>
     <link rel="stylesheet" href="~/css/cartCss.css" />
+
 </head>
 <div class="containerNew">
 
@@ -114,7 +115,52 @@
                     <a class="btn " href='@Url.Action("Index", "Home")'>Continue Buy</a>
                 </td>
                 <td>
-                    <a class="btn " href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
+
+                    <a class="btn " load="myFunction()" href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
+                    <script>
+                        function myFunction() {
+                            alert("Hello! I am an alert box!");
+                        }
+                     window.addEventListener("load", () => {
+                                const canvas = document.querySelector("#canvas");
+
+                                const ctx = canvas.getContext("2d");
+
+                                canvas.height = window.innerHeight;
+                                canvas.width = window.innerWidth;
+
+
+                                let painting = false;
+
+                                function startPosition() {
+                                painting = true;
+                                }
+                                function stopPosition() {
+                                painting = false;
+                                }
+                                function draw(e) {
+                                    if (!painting) return;
+                                    ctx.lineWidth = 10;
+                                    ctx.lineCap = "round";
+                                    ctx.lineTo(e.clientX, e.clientY);
+                                    ctx.stroke();
+                                }
+
+                                canvas.addEventListener("mousedown", startPosition);
+                                 canvas.addEventListener("mouseup", stopPosition);
+                         canvas.addEventListener("mousemove", draw);
+                         alert(canvas);
+
+
+
+
+
+
+
+
+                            });
+                    </script>
+
                 </td>
                 <td>          </td>
 
