@@ -1,23 +1,74 @@
-﻿
+﻿@model dynamic
 @{
     ViewData["Title"] = "Join";
-    var list = ViewBag.Query2;
+    var joinData = ViewBag.JoinData;
 }
 
 <h1>Join</h1>
 
-<p>
- 
-    @foreach(var item in list)
+<table class="table">
+    @foreach (var item in joinData)
     {
-        @item
-        @*var bla = item;
-        string blas = bla.Name;
-        @bla
-       @item.Name*@
+        <thead>
 
 
+            <tr>
+
+                <th>
+                    User Name
+                </th>
+                <th>
+                    Transaction Id
+                </th>
+                <th>
+                    Transaction Date
+                </th>
+                <th>
+                    Transaction total price
+                </th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @*@item.Tran*@
+                    <a class="fonts links" href='@Url.Action( "Details", "Transactions", new { id = item.Tran }, null)'>@item.Tran</a>
+                </td>
+                <td>
+                    @item.Date
+                </td>
+                <td>
+                    @item.Price
+                </td>
+            </tr>
+        </tbody>
     }
 
-</p>
+
+</table>
+
+
+
+    <p>
+
+        @foreach (var item in joinData)
+        {
+            <h1>
+                @item.Name @item.Tran
+            </h1>
+            @*var bla = item;
+                 string blas = bla.Name;
+                 @bla
+                @item.Name*@
+
+
+        }
+
+    </p>
 
