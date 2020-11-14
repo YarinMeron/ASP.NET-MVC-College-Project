@@ -27,7 +27,15 @@ namespace ShenkinStore.Controllers
         }
 
 
+        public async Task<IActionResult> Search(DateTime transactionDate)
+        {
+            DateTime date = transactionDate;
+            var query = from p in db.Transactions
+                        where p.TransDate.DayOfYear.Equals(date.DayOfYear)
+                        select p;
 
+            return PartialView(await query.ToListAsync());
+        }
 
 
         // GET: Transactions/Details/5
@@ -170,6 +178,7 @@ namespace ShenkinStore.Controllers
         // GET: Transactions/AddressAndPayment/
         public ActionResult AddressAndPayment()
         {
+            
             var userID = HttpContext.Session.GetInt32("UserID");
             if (userID != null)
             {
@@ -242,7 +251,16 @@ namespace ShenkinStore.Controllers
         }
 
 
+        public async Task<IActionResult> DisplayGraphs()
+        {
 
+            List<User> users = db.Users.ToList();
+            List<Transaction> transactions = db.Transactions.ToList();
+            ViewBag.users = users;
+            ViewBag.transactions = transactions;
+            return View();
+
+        }
 
     }
 }

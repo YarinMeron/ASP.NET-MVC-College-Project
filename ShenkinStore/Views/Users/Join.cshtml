@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Join";
+    var list = ViewBag.Query2;
+}
+
+<h1>Join</h1>
+
+<p>
+ 
+    @foreach(var item in list)
+    {
+        @item
+        @*var bla = item;
+        string blas = bla.Name;
+        @bla
+       @item.Name*@
+
+
+    }
+
+</p>
+

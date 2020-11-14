@@ -408,9 +408,6 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\ShenkinStore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\bin\Debug\netcoreapp3.1\Facebook.dll
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\BackPacks.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\SideBags.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Wallets.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AccsView.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\CartSummary.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
@@ -439,5 +436,11 @@ C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
 C:\Users\yarinmeron\Source\Repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\newCart.cshtml.g.cs
 C:\Users\yarinmeron\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\DisplayGraphs.cshtml.g.cs
-C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\DisplayGraphs.cshtml.g.cs
 C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\GroupBy.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Canvas.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\DisplayGraphs.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\aSearch.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Search.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Transactions\Search.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Search.cshtml.g.cs
+C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\obj\Debug\netcoreapp3.1\Razor\Views\Users\Join.cshtml.g.cs

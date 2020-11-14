@@ -24,6 +24,7 @@
     <script src="C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\Scripts\jquery-1.10.2.js"></script>
     <script src="C:\Users\eliordayari\source\repos\ShenkinStore\ShenkinStore\Scripts\bootstrap.js"></script>
     <link href="~/css/HomePage.css" rel="stylesheet" />
+    <link href="~/css/canvas.css" rel="stylesheet" />
 
 </head>
 
@@ -38,9 +39,84 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-
+      
         <div class="container">
-            <h2>Welcom</h2>
+            <h2 style="font-size:75px">
+                Welcom To  <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+
+                <script>
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+                    ctx.font = "30px Arial";
+                    ctx.strokeText("Shenkin Store", 10, 50);
+                </script>
+            </h2>
+            <div>
+
+                <p> Your Top Products :</p>
+                <div class="heading">
+                    <h1>
+                        <span class="shopper align-center"></span>Your Machine Learning
+                    </h1>
+
+                    <a href="https://localhost:44397/Products" class="visibility-cart transition is-open">X</a>
+                </div>
+
+
+                <table class="table align-center">
+                    @foreach (var item in ViewBag.TopProducts)
+                    {
+                        <thead>
+
+                            <tr class="align-center">
+                                <th class="th">
+                                    Product Name
+                                </th>
+                                <th class="th">
+                                    Product Type
+                                </th>
+                                <th class="th">
+                                    Price
+                                </th>
+                                <th class="th">
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                        <td class="fonts">
+
+                            @item.ProductName
+
+                        </td>
+                        <td class="fonts">
+                            @item.productType
+                        </td>
+                        <td class="fonts">
+
+
+                            @item.Price
+
+                        </td>
+                        <td class="fonts">
+                            <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+                        </td>
+                        <td class="text-center">
+                            @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 1 }, new { @class = "btn btn-info" })
+                        </td>
+
+
+                        </tbody>
+                    }
+                </table>
+
+            </div>
+
 
 
 
@@ -56,18 +132,18 @@
 
                 <!-- Wrapper for slides -->
                 @*<div class="carousel-inner">
-        <div class="item active">
-            <img src="~/Photos/DarkColor.jpg" alt="Los Angeles" style="width:100%;">
-            <div class="carousel-caption">
-                <h3>Dark is The T.A's newest fashion</h3>
-                <p>T.A is always so much fun!</p>
-            </div>
-        </div>*@
+            <div class="item active">
+                <img src="~/Photos/DarkColor.jpg" alt="Los Angeles" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3>Dark is The T.A's newest fashion</h3>
+                    <p>T.A is always so much fun!</p>
+                </div>
+            </div>*@
                 <div class="carousel-inner">
                     <div class="item active">
                         <video controls autoplay>
-                            <source src="~/Videos/videoplayback.mp4"  type="video/mp4">
-                           
+                            <source src="~/Videos/videoplayback.mp4" type="video/mp4">
+
                             Your browser does not support the video tag.
                         </video>
                         <div class="carousel-caption">
