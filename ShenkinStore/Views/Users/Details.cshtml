@@ -61,7 +61,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TransactionId)
+                            <a class="fonts links" href='@Url.Action( "Details", "Transactions", new { id = item.TransactionId }, null)'>@item.TransactionId</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TransDate)

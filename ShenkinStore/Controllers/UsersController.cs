@@ -8,6 +8,7 @@ using ShenkinStore.Models;
 using System.Data;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.ComponentModel;
 
 namespace ShenkinStore.Controllers
 {
@@ -46,22 +47,34 @@ namespace ShenkinStore.Controllers
             userlist = _context.Users.ToList();
             List<Transaction> translist = new List<Transaction>();
             translist = _context.Transactions.ToList();
-            //var query = userlist.Join(translist);
-            //ViewBag.Query = query;
             var query = from e1 in userlist
                         join e2 in translist
                             on e1.UserId equals e2.User.UserId
                         select new
                         {
                             Name = e1.UserName,
-                            Tran = e2.TransactionId
+                            Tran = e2.TransactionId,
+                            Date = e2.TransDate,
+                            Price=e2.Amount
                         };
 
-              ViewBag.Query2 = query;
+            List<ExpandoObject> joinData = new List<ExpandoObject>();
 
-            //dynamic model = new ExpandoObject();
-            //model.Users = query.;
-            //model.Transactions = db.Orders.ToList();
+            foreach (var item in query)
+            {
+                IDictionary<string, object> itemExpando = new ExpandoObject();
+                foreach (PropertyDescriptor property
+                         in
+                         TypeDescriptor.GetProperties(item.GetType()))
+                {
+                    itemExpando.Add(property.Name, property.GetValue(item));
+                }
+                joinData.Add(itemExpando as ExpandoObject);
+            }
+
+            ViewBag.JoinData = joinData;
+
+      
             return View();
         }
         // GET: Users/Details/5

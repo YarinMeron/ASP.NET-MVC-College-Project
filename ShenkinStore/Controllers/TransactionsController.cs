@@ -46,7 +46,7 @@ namespace ShenkinStore.Controllers
                 return NotFound();
             }
 
-            var transaction = await db.Transactions.Include(p => p.productslist)
+            var transaction = await db.Transactions.Include(p => p.productslist).Include(u=>u.User)
                 .FirstOrDefaultAsync(m => m.TransactionId == id);
 
             if (transaction == null)
