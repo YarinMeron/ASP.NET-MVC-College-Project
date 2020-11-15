@@ -2,14 +2,21 @@
     var form = $("#myForm")
     var url = form.attr('action')
 
-    $("#filterName").keyup(function () {
-        $.ajax({
-            url: url,
-            data: form.serialize(),
-            success: function (data) {
-                $("tbody").html(data);
-            }
-        });
+    $("#filterName").keyup(function (event) {
+        event.preventDefault()
+        if ($(this).val().length === 0) {
+            location.reload(true);
+        }
+
+        else {
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                success: function (data) {
+                    $('.tbody').html(data);
+                }
+            });
+        }
     });
 });
 
@@ -23,7 +30,7 @@ $(function () {
             url: url,
             data: form.serialize(),
             success: function (data) {
-                $("tbody").html(data);
+                $(".tbody").html(data);
             }
         });
     });
@@ -33,14 +40,19 @@ $(function () {
     var form = $("#myForm3")
     var url = form.attr('action')
 
-    $("#filterDate").keydown(function () {
-        $.ajax({
-            url: url,
-            data: form.serialize(),
-            success: function (data) {
-                $("tbody").html(data);
-            }
-        });
+    $("#filterDate").keyup(function () {
+        if ($(this).val().length === 0) {
+            location.reload(true);
+        }
+        else {
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                success: function (data) {
+                    $("tbody").html(data);
+                }
+            });
+        }
     });
 });
 
@@ -49,12 +61,17 @@ $(function () {
     var url = form.attr('action')
 
     $("#userNamefilter").keyup(function () {
-        $.ajax({
-            url: url,
-            data: form.serialize(),
-            success: function (data) {
-                $("tbody").html(data);
-            }
-        });
+        if ($(this).val().length === 0) {
+            location.reload(true);
+        }
+        else {
+            $.ajax({
+                url: url,
+                data: form.serialize(),
+                success: function (data) {
+                    $("tbody").html(data);
+                }
+            });
+        }
     });
 });

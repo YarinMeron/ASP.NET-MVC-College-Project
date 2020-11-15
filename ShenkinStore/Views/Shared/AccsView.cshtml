@@ -25,7 +25,7 @@
                         <partial name="_LoginPartial" />
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark option" onclick="window.location='/Home/index'">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark option" onclick="window.location='/Users/index'">Users</a>
@@ -34,16 +34,14 @@
                                 <a class="nav-link text-dark option" onclick="window.location='/Products/index'" >Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" onclick="window.location='/Transactions/index'" asp-controller="Transactions">Transactions</a>
+                                <a class="nav-link text-dark option" onclick="window.location='/Transactions/index'" >Transactions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" onclick="window.location='/ShoppingCart/index'" asp-controller="ShoppingCart">Shopping Cart</a>
+                                <a class="nav-link text-dark option" onclick="window.location='/ShoppingCart/index'" >Shopping Cart</a>
                             </li>
+                           
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" asp-area="" asp-controller="Home" asp-action="ProductsLabels">Hot Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark option" asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a>
+                                <a class="nav-link text-dark option" onclick="window.location='/Home/Contact'">Contact Us</a>
                             </li>
 
 
@@ -75,19 +73,17 @@
                         <partial name="_LoginPartial" />
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark option"  onclick="window.location='/Home/index'">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark option" onclick="window.location='/Products/index'" >Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" onclick="window.location='/ShoppingCart/index'" asp-controller="ShoppingCart">Shopping Cart</a>
+                                <a class="nav-link text-dark option" onclick="window.location='/ShoppingCart/index'" >Shopping Cart</a>
                             </li>
+                           
                             <li class="nav-item">
-                                <a class="nav-link text-dark option" asp-area="" asp-controller="Home" asp-action="ProductsLabels">Hot Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark option" asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a>
+                                <a class="nav-link text-dark option" onclick="window.location='/Home/Contact'">Contact Us</a>
                             </li>
                         </ul>
                     </div>
