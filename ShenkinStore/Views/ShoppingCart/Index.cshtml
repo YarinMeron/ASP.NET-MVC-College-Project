@@ -33,7 +33,7 @@
                         <th class="th">
                             Price
                         </th>
-                        <th class="th tuck ">
+                        <th class="th  ">
                             Amount
                         </th>
 
@@ -69,12 +69,25 @@
 
                                 <div class="col col-qty tuck layout-inline align-center">
                                     <section c width="100px">
-
-                                        <a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
+                                        <table>
+                                            <tr>
+                                                <th class="td">
+                                                    <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
+                                                    
+                                                </th>
+                                                <th class="td">
+                                                    <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1"  class="align-center" />
+                                                </th>
+                                                <th class="td">
+                                                    <a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
+                                                </th>
+                                            </tr>
+                                        </table>
+                                        @*<a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
 
                                         <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1" class="align-center" />
 
-                                        <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
+                                        <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>*@
                                     </section>
                                 </div>
 
@@ -124,7 +137,7 @@
             <table>
                 <tr>
                     <td>
-                        <a class="btn " href='@Url.Action("Index", "Home")'>Continue Buy</a>
+                        <a class="btn " href='@Url.Action("Index", "Products")'>Continue Buy</a>
                     </td>
                     <td>
 
@@ -186,4 +199,4 @@
     </body>
 
 
-
+</div>

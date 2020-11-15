@@ -1,12 +1,13 @@
 ﻿body {
   
     background-image: url('../Photos/4ea1cdc6e9544afc5101ab0de8a8d15a.jpg');
+
     
 }
 
 .box {
     width: 350px;
-    padding: 40px;
+    padding: 5px;
     position: absolute;
     top: 30%;
     left: 63%;
