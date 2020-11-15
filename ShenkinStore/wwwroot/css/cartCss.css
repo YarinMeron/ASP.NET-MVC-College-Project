@@ -5,6 +5,15 @@
     background: #bbc3c6;
  
 }
+    body{
+          background: #ece3e3;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100%; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    }
 
 * {
     box-sizing: border-box;
@@ -35,6 +44,9 @@ h1 {
 p {
     font-size: 1.5em;
     color: #8a8a8a;
+}
+.tabdata{
+    background:#8a8a8a;
 }
 
 input {
@@ -118,8 +130,15 @@ a.remove:hover {
     text-align: center;
 }
 
-th, td{
+th{
     background: #f34d35;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+td {
+    background: #bbc3c6;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
