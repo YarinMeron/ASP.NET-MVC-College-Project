@@ -17,89 +17,95 @@
     </div>
 
 
+    <body>
+        @if (Model.CartItems.Count == 0)
+        {
+            <a class="btn btn-danger text-right middle-block" href='@Url.Action("Index", "Products")'>Your Cart is empty continue buy</a> }
+        else
+        {
+            <table class="table align-center">
+                <thead>
+                    <tr class="align-center">
+                        <th class="th">
+                            Product Name
+                        </th>
 
-    @if (Model.CartItems.Count == 0)
-    {
-        <a class="btn btn-danger text-right middle-block" href='@Url.Action("Index", "Products")'>Your Cart is empty continue buy</a> }
-    else
-    {
-        <table class="table align-center">
-            <tr class="align-center">
-                <th class="th">
-                    Product Name
-                </th>
+                        <th class="th">
+                            Price
+                        </th>
+                        <th class="th tuck ">
+                            Amount
+                        </th>
 
-                <th class="th">
-                    Price
-                </th>
-                <th class="th tuck ">
-                    Amount
-                </th>
+                        <th class="th">
+                            Photo
+                        </th>
 
-                <th class="th">
-                    Photo
-                </th>
+                        <th class="th">
+                            Total per amounts
+                        </th>
+                        <th class="th">
 
-                <th class="th">
-                    Total per amounts
-                </th>
-
-
-            </tr>
-
-            @foreach (var item in Model.CartItems)
-            {
-                
-        <tr id="row-@item.ProductId">
-            <td class=" fonts">
-                @*@Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, null)*@
-                <a class="fonts links" href='@Url.Action( "Details", "Products", new { id = item.ProductId }, null)'>@item.ProductName</a>
-            </td>
-            <td class=" fonts">
-                @item.Price ₪
-            </td>
-            <td   >
-
-         
-
-                <div class="col col-qty tuck layout-inline align-center" >
-                    <section c width="100px">
-
-                        <a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
-
-                        <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1" class="align-center" />
-
-                        <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
-                    </section>
-                </div>
-
-            </td>
+                        </th>
 
 
-            <td class=" fonts links">
-                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
-            </td>
-           
-            <td class="fonts">
+                    </tr>
+                </thead>
 
-
-                @Model.TotalPricePerProduct[item.ProductId]
-
-            </td>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tbody class="tabdata">
+                        <tr id="row-@item.ProductId">
+                            <td class=" fonts">
+                                @*@Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, null)*@
+                                <a class="fonts links" href='@Url.Action( "Details", "Products", new { id = item.ProductId }, null)'>@item.ProductName</a>
+                            </td>
+                            <td class=" fonts">
+                                @item.Price ₪
+                            </td>
+                            <td>
 
 
 
-            <td class=" fonts text-right">
+                                <div class="col col-qty tuck layout-inline align-center">
+                                    <section c width="100px">
 
-       
-                <a href='@Url.Action("removefromcart", "ShoppingCart", new { id = item.ProductId }, null)' class="remove">x</a>
-            </td>
+                                        <a href='@Url.Action("IncreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-plus">+</a>
+
+                                        <input type="numeric" value="@Model.Amounts[item.ProductId]" size="1" class="align-center" />
+
+                                        <a href='@Url.Action("DecreaseProductAmount", "ShoppingCart", new { id = item.ProductId }, null)' class="qty qty-minus">-</a>
+                                    </section>
+                                </div>
+
+                            </td>
 
 
-        </tr>
+                            <td class=" fonts links">
+                                <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
+                            </td>
+
+                            <td class="fonts">
+
+
+                                @Model.TotalPricePerProduct[item.ProductId]₪
+
+                            </td>
+
+
+
+                            <td class=" fonts text-right">
+
+
+                                <a href='@Url.Action("removefromcart", "ShoppingCart", new { id = item.ProductId }, null)' class="remove">x</a>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
                 }
-            
-            <tr class="text-right">
+
+            <tr class="text-right tabdata">
                 <td class="fonts">
                     Total:
                 </td>
@@ -107,21 +113,27 @@
                 <td id="cart-total" class="text-right">
                     <b>@Model.CartTotal.ToString() ₪</b>
                 </td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td>
-                    <a class="btn " href='@Url.Action("Index", "Home")'>Continue Buy</a>
+                <td class="fonts">
                 </td>
-                <td>
+                <td class="fonts">
+                </td>
+                <td class="fonts">
+                </td>
+            </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <a class="btn " href='@Url.Action("Index", "Home")'>Continue Buy</a>
+                    </td>
+                    <td>
 
-                    <a class="btn " load="myFunction()" href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
-                    <script>
-                        function myFunction() {
-                            alert("Hello! I am an alert box!");
-                        }
-                     window.addEventListener("load", () => {
+                        <a class="btn " load="myFunction()" href='@Url.Action("AddressAndPayment", "Transactions")'>Proceed To Pay</a>
+                        <script>
+                            function myFunction() {
+                                alert("Hello! I am an alert box!");
+                            }
+                            window.addEventListener("load", () => {
                                 const canvas = document.querySelector("#canvas");
 
                                 const ctx = canvas.getContext("2d");
@@ -133,10 +145,10 @@
                                 let painting = false;
 
                                 function startPosition() {
-                                painting = true;
+                                    painting = true;
                                 }
                                 function stopPosition() {
-                                painting = false;
+                                    painting = false;
                                 }
                                 function draw(e) {
                                     if (!painting) return;
@@ -147,9 +159,9 @@
                                 }
 
                                 canvas.addEventListener("mousedown", startPosition);
-                                 canvas.addEventListener("mouseup", stopPosition);
-                         canvas.addEventListener("mousemove", draw);
-                         alert(canvas);
+                                canvas.addEventListener("mouseup", stopPosition);
+                                canvas.addEventListener("mousemove", draw);
+                                alert(canvas);
 
 
 
@@ -159,19 +171,19 @@
 
 
                             });
-                    </script>
+                        </script>
 
-                </td>
-                <td>          </td>
+                    </td>
+                    <td>          </td>
 
-            </tr>
+                </tr>
 
 
 
-        </table>
-        <a class="btn-red" href='@Url.Action("emptyCart", "ShoppingCart")'> Empty Cart</a>
-    }
-
+            </table>
+            <a class="btn-red" href='@Url.Action("emptyCart", "ShoppingCart")'> Empty Cart</a>
+        }
+    </body>
 
 
 
