@@ -14,8 +14,19 @@
 </form>
 
 <div>
-    @Html.ActionLink("Create New", "Create")
-    @Html.ActionLink("View Graphs", "DisplayGraphs")
+    <table>
+        <tr>
+            <th>
+                <a class="btn btn-info" asp-action="Create">Create New</a>
+            </th>
+            <th>
+                <a class="btn btn-info" asp-action="DisplayGraphs">View Graphs</a>
+            </th>
+        </tr>
+    </table>
+    
+    
+ 
 </div>
 
 <div class="text-left col-12 form-zone">

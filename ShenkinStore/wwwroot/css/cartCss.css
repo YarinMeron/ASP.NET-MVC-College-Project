@@ -93,14 +93,19 @@ a.remove:hover {
     border-radius: 0.6em;
     background: #ecf0f1;
     box-shadow: 0 0.5em 0 rgba(138, 148, 152, 0.2);
+    opacity:0.5;
 }
+    .containerNew:hover {
+        opacity: 1;
+    }
 
 .heading {
     padding: 1em;
     position: relative;
     z-index: 1;
     color: #f7f7f7;
-    background: #f34d35;
+    /* background: #f34d35;*/
+    background: #653b68;
 }
 
 .cart {
@@ -130,14 +135,22 @@ a.remove:hover {
     text-align: center;
 }
 
-th{
-    background: #f34d35;
+th {
+    /*  background: #f34d35;*/
+    background: #653b68;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.5em;
 }
 td {
+    background: #bbc3c6;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.td {
     background: #bbc3c6;
     color: #fff;
     text-transform: uppercase;
@@ -245,12 +258,12 @@ a.qty {
     font-size: 2.5em;
     font-weight: bold;
     text-align: center;
-    background: #43ace3;
+   /* background: #43ace3;*/
     color: #fff;
 }
 
     a.qty:hover {
-        background: #3b9ac6;
+      /*  background: #3b9ac6;*/
     }
 
 .btn {
