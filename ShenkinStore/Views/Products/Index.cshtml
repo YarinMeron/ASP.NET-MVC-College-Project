@@ -5,43 +5,55 @@
     ViewData["Title"] = "Index";
 }
 
-<table>
-    <tr>
-        <th>
-            <a class="btn btn-info" asp-action="GroupBy">Products By Type</a>
-        </th>
-        @if (Context.Session.GetInt32("UserType") == 1)
-        {
-    <th>
-        <a class="btn btn-info" asp-action="Create"><h3>Create New Product</h3></a>
-    </th>
-        }
 
-        </tr>
-</table>
-@*<p>
-    <a class="btn btn-info" asp-action="GroupBy">Products By Type</a>
-</p>
+<link type="text/css" href="~/css/ProductsGrid.css" rel="stylesheet" />
+
+
 @if (Context.Session.GetInt32("UserType") == 1)
 {
-    <a class="btn btn-info" asp-action="Create"><h3>Create New Product</h3></a>
-}*@
+    <h1>Admin view</h1>
+    <table>
+        <tr>
+            <th>
+                <a class="btn btn-info" asp-action="GroupBy">Products By Type</a>
+            </th>
 
-<!----------------------------------Search Product By Name---------------------------->
-<form asp-action="Search" id="myForm">
-    <div class="form-group">
-        <input name="productName" class="form-control" autocomplete="off" id="filterName" type="text" placeholder="Search By Product Name">
+            <th>
+                <a class="btn btn-info" asp-action="Create">Create New Product</a>
+            </th>
+
+
+        </tr>
+    </table>
+
+    <div class="container">
+
+
+        <!----------------------------------Search Product By Name---------------------------->
+        <form style="width:25%;" asp-action="Search" id="myForm">
+            <div class="form-group">
+                <input name="productName" class="form-control" autocomplete="off" id="filterName" type="text" placeholder="Search By Product Name">
+            </div>
+        </form>
+        <!-------------------------------------------------------------------------------------->
     </div>
-</form>
-<!-------------------------------------------------------------------------------------->
-<!------------Search Product By Gender Brand and Color---------->
 
-<div class="form-container">
-    <form id="myForm2" asp-action="aSearch">
-        Filter your favs!
+}
+
+
+
+<!------------------------Search Product By Gender Brand and Color---------------------------->
+
+<div class="form-container" style="height:90px;">
+    <form id="myForm2" asp-action="aSearch" style="
+        font-size: 27px;
+        text-align: center;
+        height: 50px;
+        background: #f8f9faba;">
+        Choose By:
         <select id="gender" name="gender" type="select">
             <option value="">Gender</option>
-            <option value="female">Feamle</option>
+            <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="unisex">Unisex</option>
         </select>
@@ -59,102 +71,54 @@
             <option value="Red">Red</option>
             <option value="Green">Green</option>
         </select>
-        <input type="submit" value="Filter">
+
     </form>
 </div>
 
 <!-----------------------------End of Filter Bar------------------------------>
-<table class="table">
-    <thead>
-        <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colorr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productBrand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                Already Sold:
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Metrial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="tbody">
+    <div class="grid-container">
         @foreach (var item in Model)
         {
-            <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)₪
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Colorr)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productBrand)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Metrial)
-                </td>
-                <td>
-                    <img src="@Url.Content(item.ImageUrl)" alt="cant display" width="180px" height="180px" />
-                </td>
-                <td class="text-center">
-                    @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 1 }, new { @class = "btn btn-info" })
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
 
-                    @if (Context.Session.GetInt32("UserType") == 1)
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit &nsub; </a>
-                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            <div class="grid-item">
+                <div class="product-card" id="@item.ProductId">
+                    <div class="product-tumb">
+                        <img src="@Url.Content(item.ImageUrl)" alt="Cant Display">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory" id="@item.ProductName"> @item.ProductName</span>
+                        <h5 id="@item.gender">@item.gender </h5>
+                        <h5 id="@item.Metrial">@item.Metrial</h5>
+                        <h5 id="@item.productType">@item.productType</h5>
+                        <h5 id="@item.Colorr">Color: @item.Colorr</h5>
+                        @if (Context.Session.GetInt32("UserType") == 1)
+                        {
+                            <h5 id="@item.Quantity"> Already Sold: @item.Quantity</h5>
+                        }
+                        <p id="@item.Description">@item.Description</p>
+                        <div class="product-bottom-details">
 
-                    }
-                </td>
-
-            </tr>
+                            <div class="product-links" style="width:100%; text-align:center">
+                                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductId, amount = 1 }, new { @class = "btn btn-info" })
+                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+                                @if (Context.Session.GetInt32("UserType") == 1)
+                                {
+                                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
+                                    <a class="btn btn-info" asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                                }
+                            </div>
+                            <div style="text-align:left;" id="@item.Price" class="product-price">@item.Price ₪</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
 
+</div>
 @section Scripts {
 
     <script src="~/js/productsScripts.js"></script>

@@ -27,6 +27,7 @@ namespace ShenkinStore.Models
         [Display(Name = "Gender")]
         public Gender gender { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Already Sold")]
         [Range(0, 100, ErrorMessage = "Can only be between 1 .. 100")]
         public int Quantity { get; set; }
         public string Metrial { get; set; }

@@ -228,7 +228,7 @@ namespace ShenkinStore.Controllers
                     objuser.userType = 0;
                     _context.Users.Add(objuser);
                     _context.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Users");
                 }
                 else
                 {
